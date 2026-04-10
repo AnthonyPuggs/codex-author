@@ -1,0 +1,42 @@
+{
+  "name": "clo-author",
+  "version": "4.0.0",
+  "description": "Codex-native research architecture for empirical social science, from literature review to journal submission.",
+  "author": {
+    "name": "Clo-Author Contributors",
+    "url": "https://github.com/scunning1975/clo-author"
+  },
+  "homepage": "https://github.com/scunning1975/clo-author",
+  "repository": "https://github.com/scunning1975/clo-author",
+  "license": "MIT",
+  "keywords": [
+    "research",
+    "economics",
+    "social-science",
+    "literature-review",
+    "peer-review",
+    "latex",
+    "replication"
+  ],
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Clo-Author",
+    "shortDescription": "Empirical social-science research workflows for Codex",
+    "longDescription": "Bring the Clo-Author research workflow into Codex through natural-language skills, file-backed memory, worker-critic quality gates, and journal-calibrated review references.",
+    "developerName": "Clo-Author Contributors",
+    "category": "Coding",
+    "capabilities": [
+      "Interactive",
+      "Write"
+    ],
+    "websiteURL": "https://github.com/scunning1975/clo-author",
+    "privacyPolicyURL": "https://github.com/scunning1975/clo-author",
+    "termsOfServiceURL": "https://github.com/scunning1975/clo-author",
+    "defaultPrompt": [
+      "Set up this repository for a new empirical research project",
+      "Run a literature review and data search for my research question",
+      "Peer review this paper as if it were headed to a target journal"
+    ],
+    "screenshots": []
+  }
+}

@@ -1,0 +1,113 @@
+---
+title: "Customization Guide"
+subtitle: "Adapt the Codex Version to Your Workflow"
+---
+
+# Overview
+
+The Codex-native Clo-Author is customized through four active surfaces:
+
+| Surface | Location | Use It For |
+|---------|----------|------------|
+| Constitution | `AGENTS.md` | Always-loaded rules, project state, core principles |
+| Plugin manifest | `plugins/clo-author/.codex-plugin/plugin.json` | Plugin identity and discovery metadata |
+| Skills | `plugins/clo-author/skills/` | Multi-step workflows |
+| References | `plugins/clo-author/references/` | Field calibration, workflow rules, role guidance |
+
+# 1. Customize `AGENTS.md`
+
+This is the one file Codex should always read.
+
+Keep it lean:
+
+- project metadata
+- core principles
+- file locations
+- compile commands
+- active reference pointers
+- current project state
+
+Do not bury long rubrics or role prompts in `AGENTS.md`. Those belong in plugin references.
+
+If you are converting the template into a live project, this is also where you replace the shipped placeholders and current-state stubs.
+
+# 2. Customize the Domain Profile
+
+Edit `plugins/clo-author/references/domain-profile.md` for:
+
+- field and subfields
+- target journal tiers
+- common datasets
+- identification strategies
+- notation conventions
+- seminal references
+- referee concerns
+
+This is the main calibration layer for economics and adjacent disciplines.
+
+# 3. Extend Journal Calibration
+
+Edit `plugins/clo-author/references/journal-profiles.md` when you want journal-specific review culture. The `review` skill uses it when the user asks for journal-calibrated peer review.
+
+# 4. Bootstrap the Template into a Working Project
+
+Use the template defaults as a starting point, then fill in:
+
+- project metadata in `AGENTS.md`
+- the current project state table in `AGENTS.md`
+- the field calibration in `plugins/clo-author/references/domain-profile.md`
+- the first saved spec, plan, and session log under `quality_reports/`
+
+The goal is to preserve the same architecture while swapping template defaults for project facts.
+
+# 5. Add or Refine Skills
+
+Each workflow lives in `plugins/clo-author/skills/[name]/SKILL.md`.
+
+Use skills when:
+
+- the workflow is multi-step
+- the same sequence comes up repeatedly
+- the workflow benefits from named roles or references
+- the outputs should always be saved to a known location
+
+Use the template in `templates/skill-template.md` to add new skills.
+
+# 6. Decide What Stays Always-Loaded
+
+A good rule of thumb:
+
+- put stable, high-level instructions in `AGENTS.md`
+- put detailed procedures in `plugins/clo-author/references/`
+- put reusable workflow logic in skills
+
+The active Codex references for most projects should include workflow, content standards, scoring, logging, domain calibration, and journal calibration.
+
+# 7. Handle Legacy Claude Assets Carefully
+
+The repository still contains `.claude/` plus migrated prompt copies under:
+
+- `plugins/clo-author/references/legacy-agents/`
+- `plugins/clo-author/references/legacy-rules/`
+- `plugins/clo-author/hooks/legacy/`
+
+Treat those as source material, not as the live Codex runtime.
+
+# 8. Refresh Infrastructure Without Replacing the Project
+
+When you want newer template mechanics:
+
+- refresh `plugins/clo-author/skills/`, `plugins/clo-author/references/`, `templates/`, and guide docs
+- preserve `paper/`, `scripts/`, `data/`, `quality_reports/`, `MEMORY.md`, and project-specific calibration edits
+- treat infrastructure refresh as a controlled maintenance task, not a content rewrite
+
+# 9. Persistence and Recovery
+
+This repo assumes explicit persistence:
+
+- plans in `quality_reports/plans/`
+- specs in `quality_reports/specs/`
+- session logs in `quality_reports/session_logs/`
+- memory in `MEMORY.md`
+
+If you customize the workflow, preserve these storage conventions so the project stays resumable across sessions.

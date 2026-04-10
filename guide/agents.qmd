@@ -1,0 +1,94 @@
+---
+title: "Meet the Agents"
+subtitle: "The Research Roles Behind the Skills"
+---
+
+# How Agents Work in Codex
+
+The Codex version keeps the same research roles as the Claude version, but they are now activated through skills and optional sub-agent delegation rather than through a `.claude/agents/` runtime.
+
+The active role summary lives in `plugins/clo-author/references/agent-catalog.md`. Detailed prompt copies from the Claude-era implementation are preserved under `plugins/clo-author/references/legacy-agents/`.
+
+# Discovery Roles
+
+## Librarian
+
+Finds and synthesizes literature, builds annotated bibliographies, maps the frontier, and positions the project.
+
+## librarian-critic
+
+Checks the literature review for recency gaps, missing seminal papers, one-sided coverage, and poor positioning.
+
+## Explorer
+
+Builds a ranked inventory of feasible datasets and evaluates coverage, access, sample size, and fit to the research question.
+
+## explorer-critic
+
+Stress-tests the data recommendation on measurement validity, representativeness, and identification fit.
+
+# Strategy Roles
+
+## Strategist
+
+Designs the identification strategy, estimator, robustness plan, and falsification logic.
+
+## strategist-critic
+
+Reviews assumptions, inference, estimator choice, and whether a skeptical referee would accept the design.
+
+# Execution Roles
+
+## Data-engineer
+
+Handles cleaning, joins, panel construction, variable creation, and output plumbing.
+
+## Coder
+
+Implements estimators, robustness checks, tables, and figures in R, Stata, Python, or Julia.
+
+## coder-critic
+
+Reviews reproducibility, code quality, path safety, strategy alignment, and output sanity.
+
+## Writer
+
+Drafts and revises manuscript sections, translating results into empirical-paper prose.
+
+## writer-critic
+
+Checks notation, hedging, unsupported claims, and LaTeX quality.
+
+# Peer Review Roles
+
+## Editor
+
+Runs desk review, assigns referees, and synthesizes the editorial decision.
+
+## domain-referee
+
+Reviews contribution, positioning, literature coverage, and substantive claims.
+
+## methods-referee
+
+Reviews identification, inference, robustness, and replication readiness.
+
+# Presentation Roles
+
+## Storyteller
+
+Builds talks derived directly from the paper.
+
+## storyteller-critic
+
+Checks pacing, density, visual hierarchy, and fidelity to the paper.
+
+# Infrastructure Roles
+
+## Verifier
+
+Runs compile, execution, and package-audit checks.
+
+## Orchestrator
+
+Coordinates phases, delegates roles, enforces quality gates, and escalates when pairs fail to converge.

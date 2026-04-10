@@ -1,0 +1,84 @@
+---
+title: "Architecture Reference"
+subtitle: "How the Codex Version Works"
+---
+
+# System Overview
+
+The Codex-native Clo-Author has five active layers:
+
+| Layer | Location | Purpose |
+|-------|----------|---------|
+| Root constitution | `AGENTS.md` | Always-loaded project rules |
+| Plugin manifest | `plugins/clo-author/.codex-plugin/plugin.json` | Registers the repo-local plugin |
+| Skills | `plugins/clo-author/skills/` | Natural-language workflows |
+| References | `plugins/clo-author/references/` | Domain, journal, workflow, and role guidance |
+| File-backed memory | `MEMORY.md`, `quality_reports/` | Durable context across sessions |
+
+The legacy `.claude/` tree is no longer part of the active runtime. It remains only as source material during the migration.
+
+# Worker-Critic Model
+
+The architecture still uses specialized roles, but Codex handles them through skills and optional sub-agent delegation.
+
+| Role Type | Responsibility | File Mutation |
+|-----------|----------------|---------------|
+| Worker | Produces artifacts | May edit |
+| Critic | Reviews and scores | Read-only |
+| Referee | Blind peer-review report | Read-only |
+| Infrastructure | Routing, verification, synthesis | Read-only by default |
+
+The active role catalog is in `plugins/clo-author/references/agent-catalog.md`.
+
+# Execution Loop
+
+1. Read `AGENTS.md`, `MEMORY.md`, and the relevant references.
+2. Create a spec if the request is ambiguous.
+3. Save a plan to `quality_reports/plans/`.
+4. Execute with the appropriate worker role.
+5. Review with the paired critic.
+6. Verify outputs mechanically.
+7. Save the outcome and next step.
+
+# Delegation Policy
+
+Codex sub-agents are useful, but only when the work is truly parallelizable.
+
+- Use sub-agents for bounded subtasks with disjoint ownership.
+- Keep critics read-only.
+- Run blind referees independently.
+- Prefer 2-4 concurrent roles.
+- Fall back to sequential execution when the subtasks are tightly coupled or when sub-agents are unavailable.
+
+# Quality Gates
+
+| Gate | Threshold |
+|------|-----------|
+| Commit | 80 |
+| PR | 90 |
+| Submission | 95 overall and every scored component >= 80 |
+| Talks | Advisory only |
+
+The historical scoring rubric remains in `scripts/quality_score.py` and the migrated reference material under `plugins/clo-author/references/legacy-rules/`.
+
+# Persistence Model
+
+Codex does not depend on hidden session memory in this architecture.
+
+| Artifact | Path | Purpose |
+|----------|------|---------|
+| Durable lessons | `MEMORY.md` | Prevent repeated mistakes |
+| Requirements specs | `quality_reports/specs/` | Clarify ambiguous tasks |
+| Plans | `quality_reports/plans/` | Preserve task strategy |
+| Session logs | `quality_reports/session_logs/` | Preserve decision history |
+| Reviews and memos | `quality_reports/` | Store outputs from skills |
+
+# Hook Replacement Strategy
+
+The Claude version used automatic hooks. The Codex version keeps the behavior, but makes it explicit:
+
+- file protection becomes instruction-level policy
+- compaction recovery becomes a saved-plan routine
+- post-merge learning becomes a `tools` workflow
+
+See `plugins/clo-author/references/hook-replacements.md`.

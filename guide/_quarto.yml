@@ -1,0 +1,40 @@
+project:
+  type: website
+  output-dir: ../docs
+
+website:
+  title: "The Clo-Author for Codex"
+  navbar:
+    left:
+      - text: "Quick Start"
+        href: index.qmd
+      - text: "User Guide"
+        href: user-guide.qmd
+      - text: "Agents"
+        href: agents.qmd
+      - text: "Architecture"
+        href: architecture.qmd
+      - text: "Customization"
+        href: customization.qmd
+      - text: "Reference"
+        href: reference.qmd
+    right:
+      - icon: github
+        href: https://github.com/scunning1975/clo-author
+  page-footer:
+    center: "Built with [Quarto](https://quarto.org)"
+
+format:
+  html:
+    theme:
+      - darkly
+      - custom.scss
+    toc: true
+    toc-depth: 3
+    code-copy: true
+    code-overflow: wrap
+    smooth-scroll: true
+    mainfont: "Space Grotesk, Inter, system-ui, sans-serif"
+    monofont: "JetBrains Mono, Fira Code, Cascadia Code, monospace"
+    mermaid:
+      theme: dark
