@@ -9,8 +9,8 @@ subtitle: "Skills, Prompt Patterns, and Outputs"
 |------|-----------------|----------------|----------------|
 | `new-project` | "Set up a new project on X" | Spec + initial plan | `/new-project` |
 | `discover` | "Review the literature on X" | Discovery memo | `/discover` |
-| `strategize` | "Design the identification strategy" | Strategy memo | `/strategize` |
-| `analyze` | "Implement the analysis for this dataset" | Scripts + outputs | `/analyze` |
+| `strategize` | "Design the identification strategy" | Strategy memo + decision record | `/strategize` |
+| `analyze` | "Implement the analysis for this dataset" | Scripts + outputs + results summary | `/analyze` |
 | `write` | "Draft the introduction" | Revised manuscript text | `/write` |
 | `review` | "Peer review this paper for JHR" | Review memo + weighted score | `/review` |
 | `revise` | "Turn this referee report into revisions" | Response plan | `/revise` |
@@ -57,6 +57,7 @@ Use for:
 - robustness planning
 - falsification planning
 - PAP drafting
+- decision records when a design choice is locked
 
 Typical prompts:
 
@@ -72,6 +73,7 @@ Use for:
 - estimation
 - robustness checks
 - dual-language replication
+- pre-code alignment checks before implementation
 
 Typical prompts:
 
@@ -101,6 +103,8 @@ Use for:
 - proofreading
 - peer review simulation
 - stress testing
+
+Use `plugins/clo-author/references/content-invariants.md` for non-negotiable paper, code, and talk constraints. Run `plugins/clo-author/hooks/lint-scripts.sh` before deep code review when a deterministic pre-check is useful.
 
 Use `plugins/clo-author/references/quality-scoring.md` when the workflow needs a weighted score or gate result.
 
@@ -160,6 +164,7 @@ Use for small utility tasks:
 
 - compiling
 - bibliography validation
+- script linting
 - session-state summaries
 - memory updates
 - template bootstrap

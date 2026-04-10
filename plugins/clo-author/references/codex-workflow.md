@@ -20,6 +20,7 @@ Codex does not rely on hidden memory for this project.
 
 - Durable lessons go in `MEMORY.md`.
 - Active task strategy goes in `quality_reports/plans/`.
+- Decision records go in `quality_reports/decisions/` when discovery or strategy work locks an important choice.
 - Decision history goes in `quality_reports/session_logs/`.
 - Structured requirements go in `quality_reports/specs/`.
 
@@ -32,13 +33,23 @@ If a task cannot be resumed from disk, the workflow is incomplete.
 After planning:
 
 1. Select the relevant worker role.
-2. Produce the artifact.
-3. Run the paired critic in read-only mode.
-4. Fix issues and re-run review up to 3 rounds.
-5. Verify outputs mechanically whenever possible.
-6. Record the outcome and next step.
+2. For strategy work, start with a Pre-Strategy Report that states which discovery inputs were actually read and which are missing.
+3. For analysis work, start with a Pre-Code Report that states the strategy memo, naming map, estimator, and robustness obligations before editing code.
+4. Produce the artifact.
+5. Run the paired critic in read-only mode.
+6. Fix issues and re-run review up to 3 rounds.
+7. Verify outputs mechanically whenever possible.
+8. Record the outcome and next step.
 
-## 4. Delegation Policy
+## 4. Mechanical Enforcement
+
+Before deeper review, run the fastest deterministic checks you can:
+
+- Apply `plugins/clo-author/references/content-invariants.md` as the hard invariant layer.
+- For R, Python, and Julia scripts, run `plugins/clo-author/hooks/lint-scripts.sh [file|dir]` as an advisory pre-check.
+- Treat lint output as a screen for grep-able mistakes, not as a substitute for critic review.
+
+## 5. Delegation Policy
 
 - Use sub-agents only for bounded work with clear ownership.
 - Keep critics read-only.
@@ -46,7 +57,7 @@ After planning:
 - Prefer sequential execution when the next step depends tightly on the previous result.
 - Preferred parallelism is 2-4 concurrent roles.
 
-## 5. Fast-Track Explorations
+## 6. Fast-Track Explorations
 
 Exploratory work belongs in `explorations/` and can run on a lighter process:
 
@@ -55,7 +66,7 @@ Exploratory work belongs in `explorations/` and can run on a lighter process:
 3. Use a lower quality threshold while exploring.
 4. Graduate promising work into production folders only after it reaches the normal quality gate.
 
-## 6. Verification
+## 7. Verification
 
 Verification is mandatory before presenting work:
 
@@ -65,7 +76,7 @@ Verification is mandatory before presenting work:
 - Reviews: ensure referenced files exist and cited claims are supported.
 - Submission packages: verify script order, README completeness, data provenance, and output freshness.
 
-## 7. Quality Gates
+## 8. Quality Gates
 
 - Commit gate: 80+
 - PR gate: 90+
@@ -73,4 +84,4 @@ Verification is mandatory before presenting work:
 - Talks: advisory score only
 
 Use `plugins/clo-author/references/quality-scoring.md` for the active weighted rubric and severity calibration.
-`scripts/quality_score.py` remains a lightweight mechanical checker, not the full multi-role review system.
+Mechanical helpers such as `plugins/clo-author/hooks/lint-scripts.sh` are advisory screens, not substitutes for full multi-role review.

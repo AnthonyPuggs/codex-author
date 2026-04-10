@@ -31,6 +31,7 @@ This repository ships in **template mode**. The placeholders and current-state s
 ## Codex Operating Model
 
 - The active control plane is `AGENTS.md` plus the repo-local plugin at `plugins/clo-author/`
+- The canonical Clo-Author upstream is `https://github.com/hugosantanna/clo-author`; use it as the infrastructure baseline for sync work
 - Skills live in `plugins/clo-author/skills/` and trigger from natural-language requests
 - Shared references live in `plugins/clo-author/references/`
 - Use sub-agents only for bounded, parallelizable work with clear ownership
@@ -44,6 +45,7 @@ This repository ships in **template mode**. The placeholders and current-state s
 
 - Save approved plans to `quality_reports/plans/YYYY-MM-DD_description.md`
 - Save requirements specs to `quality_reports/specs/YYYY-MM-DD_description.md`
+- Save decision records to `quality_reports/decisions/YYYY-MM-DD_description.md` when discovery or strategy work closes an important choice
 - Save session reasoning to `quality_reports/session_logs/YYYY-MM-DD_description.md`
 - Save reviews, strategy memos, and discovery artifacts under `quality_reports/`
 - Append durable corrections and preferences to `MEMORY.md` using `[LEARN:category]`
@@ -91,9 +93,9 @@ Detailed guidance: `plugins/clo-author/references/skill-map.md`
 │   ├── raw/
 │   └── cleaned/
 ├── scripts/                          # R, Stata, Python, Julia
-├── quality_reports/                  # Plans, specs, session logs, reviews, scores
+├── quality_reports/                  # Plans, specs, decisions, session logs, reviews, scores
 ├── explorations/                     # Sandbox for fast-track work
-├── templates/                        # Session log, report, governance, spec templates
+├── templates/                        # Session log, report, decision-record, governance, spec templates
 └── master_supporting_docs/           # Reference papers and data docs
 ```
 
@@ -117,6 +119,7 @@ cd paper/talks && TEXINPUTS=../preambles:$TEXINPUTS xelatex -interaction=nonstop
 ## Active References
 
 - `plugins/clo-author/references/codex-workflow.md` -- plan/spec protocol, delegation, artifact rules
+- `plugins/clo-author/references/content-invariants.md` -- non-negotiable paper, code, and talk invariants cited by reviewers
 - `plugins/clo-author/references/content-standards.md` -- table, figure, PDF, and exploration standards
 - `plugins/clo-author/references/quality-scoring.md` -- weighted scoring rubric, thresholds, and critic severity
 - `plugins/clo-author/references/logging.md` -- session-log and research-journal formats

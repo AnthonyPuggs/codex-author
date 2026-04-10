@@ -18,9 +18,11 @@ website:
         href: customization.qmd
       - text: "Reference"
         href: reference.qmd
+      - text: "What's New"
+        href: changelog.qmd
     right:
       - icon: github
-        href: https://github.com/scunning1975/clo-author
+        href: https://github.com/hugosantanna/clo-author
   page-footer:
     center: "Built with [Quarto](https://quarto.org)"
 

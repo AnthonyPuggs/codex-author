@@ -1,6 +1,6 @@
 # Content Standards
 
-These are the active Codex-native standards for tables, figures, PDF handling, and exploratory work. Use this reference alongside `AGENTS.md` whenever the task touches manuscript outputs or supporting materials.
+These are the active Codex-native standards for tables, figures, PDF handling, and exploratory work. Use this reference alongside `AGENTS.md` and `plugins/clo-author/references/content-invariants.md` whenever the task touches manuscript outputs or supporting materials.
 
 ## 1. Table Standards
 

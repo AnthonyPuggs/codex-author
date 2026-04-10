@@ -7,4 +7,5 @@ The Codex-native workflow does not depend on hidden event hooks. Equivalent beha
 - `AGENTS.md`
 - saved plans and session logs in `quality_reports/`
 - explicit `tools` skill routines
+- `plugins/clo-author/hooks/lint-scripts.sh` for deterministic script linting
 - `plugins/clo-author/references/hook-replacements.md`

@@ -18,6 +18,7 @@ Use this skill for small, mechanical, or maintenance-focused workflows.
 
 - Compile paper or talk
 - Validate bibliography keys
+- Lint R, Python, or Julia scripts with `plugins/clo-author/hooks/lint-scripts.sh`
 - Summarize project context from plans and logs
 - Extract durable lessons into `MEMORY.md`
 - Build or refresh docs when the repo changes materially
@@ -31,7 +32,8 @@ Use this skill for small, mechanical, or maintenance-focused workflows.
 3. When updating memory, write concise `[LEARN:*]` entries grounded in actual mistakes or durable workflow discoveries.
 4. For paper compilation, use the active `xelatex -> biber -> xelatex -> xelatex` chain from `AGENTS.md`.
 5. For template bootstrap, update placeholders and project-state stubs deliberately rather than mixing template defaults with project facts.
-6. For infrastructure refreshes, preserve user content under `paper/`, `scripts/`, `data/`, `quality_reports/`, `MEMORY.md`, and project-specific calibrations in the domain and journal profiles.
+6. For code linting, run `plugins/clo-author/hooks/lint-scripts.sh [file|dir]` and treat the output as advisory mechanical feedback before deeper review.
+7. For infrastructure refreshes, preserve user content under `paper/`, `scripts/`, `data/`, `quality_reports/`, `MEMORY.md`, and project-specific calibrations in the domain and journal profiles.
 
 ## Outputs
 

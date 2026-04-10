@@ -44,6 +44,7 @@ Outputs:
 - strategy memo
 - robustness plan
 - falsification plan
+- decision record when the design choice is locked
 
 ## 3. Execution
 
@@ -59,6 +60,7 @@ Outputs:
 - figures and tables
 - results summary
 - manuscript sections
+- pre-code report before implementation begins
 
 ## 4. Review
 
@@ -97,9 +99,10 @@ For non-trivial work, Codex should:
 
 1. write a spec if the request is ambiguous
 2. save a plan to `quality_reports/plans/`
-3. execute
-4. verify
-5. save the outcome
+3. produce any required pre-flight report before strategy or code generation
+4. execute
+5. verify
+6. save the outcome
 
 ## File-Backed Memory
 
@@ -108,12 +111,20 @@ The Codex version assumes explicit persistence:
 - `MEMORY.md` for durable lessons
 - `quality_reports/specs/` for requirements
 - `quality_reports/plans/` for task strategy
+- `quality_reports/decisions/` for discovery and strategy commitments
 - `quality_reports/session_logs/` for decision history
 - `quality_reports/research_journal.md` for compact multi-role coordination when needed
 
 ## Explorations
 
 Use `explorations/` for fast-track work that is not yet ready for the full quality gate. Graduate successful experiments into the main paper, data, and scripts directories once they are stable.
+
+# Mechanical Checks
+
+Use the new enforcement layer when the task benefits from deterministic screening:
+
+- `plugins/clo-author/references/content-invariants.md` for non-negotiable paper, code, and talk rules
+- `plugins/clo-author/hooks/lint-scripts.sh [file|dir]` for advisory R, Python, and Julia linting before deeper review
 
 # Journal-Calibrated Peer Review
 

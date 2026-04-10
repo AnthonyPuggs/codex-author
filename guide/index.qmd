@@ -5,14 +5,19 @@ subtitle: "AI Research Architecture for Empirical Social Science"
 
 An open-source Codex-native workflow for empirical social science. The Clo-Author turns a repository into a structured research workspace with plans on disk, worker-critic quality control, domain calibration, and submission-oriented outputs.
 
+**Canonical upstream:** [hugosantanna/clo-author](https://github.com/hugosantanna/clo-author)  
+**This guide:** the Codex-native port that adapts the canonical project into `AGENTS.md` plus `plugins/clo-author/`.
+
 ## Start in 5 Minutes
 
-### 1. Clone the repo
+### 1. Check the canonical upstream baseline
 
 ```bash
-gh repo fork scunning1975/clo-author --clone
+gh repo fork hugosantanna/clo-author --clone
 cd clo-author
 ```
+
+If you are working in this Codex port instead, keep the current repository as the runtime surface and use the canonical upstream only for infrastructure comparisons.
 
 ### 2. Open the repo in Codex
 

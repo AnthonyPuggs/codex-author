@@ -11,6 +11,7 @@ Use this skill for quality control and peer-review simulation.
 
 - `AGENTS.md`
 - `plugins/clo-author/references/codex-workflow.md`
+- `plugins/clo-author/references/content-invariants.md`
 - `plugins/clo-author/references/quality-scoring.md`
 - `plugins/clo-author/references/logging.md`
 - `plugins/clo-author/references/agent-catalog.md`
@@ -31,15 +32,16 @@ Use this skill for quality control and peer-review simulation.
 ## Procedure
 
 1. Detect the review mode from the request and target files.
-2. For code: use coder-critic.
-3. For manuscripts: combine writer-critic, strategist-critic, and Verifier as needed.
-4. For peer review:
+2. For code: run `plugins/clo-author/hooks/lint-scripts.sh [file|dir]` first, then use coder-critic.
+3. For manuscripts and talks: apply `plugins/clo-author/references/content-invariants.md` alongside the critic workflow and cite invariant numbers when the issue is mechanical and non-negotiable.
+4. For manuscripts: combine writer-critic, strategist-critic, and Verifier as needed.
+5. For peer review:
    - run Editor first for desk review and referee assignment
    - run domain-referee and methods-referee independently
    - have Editor synthesize the decision into FATAL / ADDRESSABLE / TASTE
-5. When reporting a weighted score, ground it in `plugins/clo-author/references/quality-scoring.md`.
-6. For journal-specific peer review, calibrate with `plugins/clo-author/references/journal-profiles.md`.
-7. Save findings before proposing revisions, and append a research-journal entry when the review changes project status or produces a formal gate outcome.
+6. When reporting a weighted score, ground it in `plugins/clo-author/references/quality-scoring.md`.
+7. For journal-specific peer review, calibrate with `plugins/clo-author/references/journal-profiles.md`.
+8. Save findings before proposing revisions, and append a research-journal entry when the review changes project status or produces a formal gate outcome.
 
 ## Outputs
 

@@ -1,13 +1,13 @@
 {
   "name": "clo-author",
-  "version": "4.0.0",
+  "version": "4.1.0",
   "description": "Codex-native research architecture for empirical social science, from literature review to journal submission.",
   "author": {
-    "name": "Clo-Author Contributors",
-    "url": "https://github.com/scunning1975/clo-author"
+    "name": "Hugo Sant'Anna and Codex port contributors",
+    "url": "https://github.com/hugosantanna/clo-author"
   },
-  "homepage": "https://github.com/scunning1975/clo-author",
-  "repository": "https://github.com/scunning1975/clo-author",
+  "homepage": "https://github.com/hugosantanna/clo-author",
+  "repository": "https://github.com/hugosantanna/clo-author",
   "license": "MIT",
   "keywords": [
     "research",
@@ -22,16 +22,16 @@
   "interface": {
     "displayName": "Clo-Author",
     "shortDescription": "Empirical social-science research workflows for Codex",
-    "longDescription": "Bring the Clo-Author research workflow into Codex through natural-language skills, file-backed memory, worker-critic quality gates, and journal-calibrated review references.",
-    "developerName": "Clo-Author Contributors",
+    "longDescription": "Bring the canonical Clo-Author research workflow into Codex through natural-language skills, file-backed memory, worker-critic quality gates, and journal-calibrated review references.",
+    "developerName": "Hugo Sant'Anna and Codex port contributors",
     "category": "Coding",
     "capabilities": [
       "Interactive",
       "Write"
     ],
-    "websiteURL": "https://github.com/scunning1975/clo-author",
-    "privacyPolicyURL": "https://github.com/scunning1975/clo-author",
-    "termsOfServiceURL": "https://github.com/scunning1975/clo-author",
+    "websiteURL": "https://github.com/hugosantanna/clo-author",
+    "privacyPolicyURL": "https://github.com/hugosantanna/clo-author",
+    "termsOfServiceURL": "https://github.com/hugosantanna/clo-author",
     "defaultPrompt": [
       "Set up this repository for a new empirical research project",
       "Run a literature review and data search for my research question",

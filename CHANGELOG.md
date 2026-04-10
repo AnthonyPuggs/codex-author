@@ -4,6 +4,25 @@ All notable changes to the Clo-Author are documented here.
 
 ---
 
+## [4.1.0] — 2026-04-11
+
+### Canonical Upstream Realignment
+- Replaced stale downstream-fork references in the live Codex surfaces with the canonical upstream `hugosantanna/clo-author`
+- Updated the repo-local plugin metadata to point at the canonical upstream and clarified that this repository is the Codex-native port
+- Documented the upstream sync policy in `README.md` and `AGENTS.md` so future maintenance compares against Hugo Sant'Anna's repo instead of stale forks
+
+### Upstream `v4.1.0` Enforcement Parity
+- Added active Codex-native content invariants for paper, code, and talk outputs
+- Added decision-record support under `templates/` and `quality_reports/decisions/`
+- Added a grep-based script linter and Codex-native references for manual lint workflows
+- Updated the strategize and analyze workflows to require structured pre-flight reports before strategy or code generation
+
+### Guide Refresh
+- Added a `What's New` guide page and updated the guide navigation to reflect the canonical upstream
+- Updated the workflow and customization guides to surface invariants, decision records, and the new maintenance model
+
+---
+
 ## [4.0.0] — 2026-04-10
 
 ### Codex-Native Architecture
@@ -296,6 +315,7 @@ The v2.0→v3.0 consolidation accidentally stripped practical detail from 6 skil
 
 ---
 
+[4.1.0]: https://github.com/hugosantanna/clo-author/compare/v4.0.0...v4.1.0
 [2.0.2]: https://github.com/hugosantanna/clo-author/compare/v2.0.1...v2.0.2
 [2.0.1]: https://github.com/hugosantanna/clo-author/compare/v2.0.0...v2.0.1
 [2.0.0]: https://github.com/hugosantanna/clo-author/compare/v1.0.1...v2.0.0

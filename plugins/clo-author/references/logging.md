@@ -33,12 +33,18 @@ Entry format:
 
 Create the file on first use. One entry per major role invocation or workflow transition.
 
-## 3. Retired Legacy Surface
+## 3. Decision Records
+
+Use `quality_reports/decisions/` when the workflow closes a meaningful discovery or strategy choice that future sessions should not silently re-open.
+
+Use `templates/decision-record.md` for the default structure.
+
+## 4. Retired Legacy Surface
 
 - `SESSION_REPORT.md` is legacy Claude-era infrastructure and is not required in the active Codex workflow.
 - Legacy hook reminders under `plugins/clo-author/hooks/legacy/` remain preserved for migration reference only.
 
-## 4. Logging Rules
+## 5. Logging Rules
 
 - Prefer append-only updates for shared journals.
 - Keep logs factual and resumable.

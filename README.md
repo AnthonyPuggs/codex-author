@@ -14,13 +14,20 @@ This repo keeps the research architecture that made the original Clo-Author effe
 It is designed as a **hybrid template**: you can fork it as a starter repository, then convert it into a filled-in working project without changing the overall architecture.
 
 **Original lineage:** [Pedro Sant'Anna's claude-code-my-workflow](https://github.com/pedrohcgs/claude-code-my-workflow), extended by Hugo Sant'Anna's Clo-Author and adapted here for Codex use.
+**Canonical upstream:** [hugosantanna/clo-author](https://github.com/hugosantanna/clo-author)
+
+This repository is the Codex-native port. Treat `hugosantanna/clo-author` as the upstream baseline for infrastructure refreshes and release comparisons; do not sync against stale downstream forks.
 
 ## Quick Start
 
+If you want the canonical Clo-Author upstream template and release history:
+
 ```bash
-gh repo fork scunning1975/clo-author --clone
+gh repo fork hugosantanna/clo-author --clone
 cd clo-author
 ```
+
+If you are working in this Codex port, use the current repository as your runtime and use the canonical upstream only as the comparison baseline for template maintenance.
 
 Then open the repository in your Codex environment and start with a prompt like:
 
@@ -135,6 +142,8 @@ Use this sequence when turning the template into a live project:
 When the upstream template changes, refresh the infrastructure selectively:
 
 - update `plugins/clo-author/skills/`, `plugins/clo-author/references/`, `templates/`, and guide docs
+- compare against `https://github.com/hugosantanna/clo-author` and translate relevant behavior into the Codex-native surfaces
+- preserve `AGENTS.md`, `plugins/clo-author/`, `.agents/`, and other Codex-only control-plane files unless the change is intentionally part of the port
 - preserve user research content under `paper/`, `scripts/`, `data/`, `quality_reports/`, and `MEMORY.md`
 - preserve project-specific domain and journal calibrations unless you are intentionally replacing them
 

@@ -1,0 +1,42 @@
+---
+title: "What's New"
+subtitle: "Codex Port Release History"
+---
+
+# v4.1.0 — Canonical Upstream Realignment and Enforcement Parity {#v41}
+
+*Released 2026-04-11*
+
+This release re-aligns the live Codex surfaces with the canonical Clo-Author upstream at `hugosantanna/clo-author` and ports the major `v4.1.0` enforcement features into the Codex-native architecture.
+
+## Canonical Upstream
+
+- Replaced stale downstream-fork links in the guide, README, and plugin metadata
+- Clarified that this repository is the Codex-native port while `hugosantanna/clo-author` is the canonical upstream
+- Added an explicit sync model so future maintenance compares against the right repository
+
+## Content Invariants
+
+- Added `plugins/clo-author/references/content-invariants.md`
+- Reviewers now have a stable invariant list for paper, code, and talk checks
+- Hard requirements such as `biblatex` + `biber`, relative paths, and caption ownership are now explicitly numbered
+
+## Pre-Flight Reports
+
+- `strategize` now requires a Pre-Strategy Report before proposing an identification design
+- `analyze` now requires a Pre-Code Report before writing scripts
+- Both workflows now make missing inputs explicit instead of silently assuming context
+
+## Decision Records and Linting
+
+- Added `templates/decision-record.md` and the `quality_reports/decisions/` convention
+- Added a portable grep-based linter at `plugins/clo-author/hooks/lint-scripts.sh`
+- The `review` and `tools` workflows now surface linting as an explicit mechanical pre-check
+
+---
+
+# v4.0.0 — Codex-Native Architecture {#v4}
+
+*Released 2026-04-10*
+
+This was the first Codex-native port release: `AGENTS.md` became the live control plane, the repo-local plugin replaced slash-command orchestration, and the guide/docs were rewritten around Codex workflows.

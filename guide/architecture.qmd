@@ -59,7 +59,7 @@ Codex sub-agents are useful, but only when the work is truly parallelizable.
 | Submission | 95 overall and every scored component >= 80 |
 | Talks | Advisory only |
 
-The historical scoring rubric remains in `scripts/quality_score.py` and the migrated reference material under `plugins/clo-author/references/legacy-rules/`.
+The active scoring rubric lives in `plugins/clo-author/references/quality-scoring.md`. Mechanical checks such as `plugins/clo-author/hooks/lint-scripts.sh` are advisory only.
 
 # Persistence Model
 
@@ -70,6 +70,7 @@ Codex does not depend on hidden session memory in this architecture.
 | Durable lessons | `MEMORY.md` | Prevent repeated mistakes |
 | Requirements specs | `quality_reports/specs/` | Clarify ambiguous tasks |
 | Plans | `quality_reports/plans/` | Preserve task strategy |
+| Decision records | `quality_reports/decisions/` | Preserve chosen designs and rejected alternatives |
 | Session logs | `quality_reports/session_logs/` | Preserve decision history |
 | Reviews and memos | `quality_reports/` | Store outputs from skills |
 

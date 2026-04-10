@@ -43,6 +43,6 @@ Critics should match tone and deductions to the project phase rather than applyi
 
 ## 4. Operational Notes
 
-- `scripts/quality_score.py` remains a lightweight mechanical checker, not the full multi-role scoring system.
+- Deterministic checks such as `plugins/clo-author/hooks/lint-scripts.sh` are advisory screens, not the full multi-role scoring system.
 - When a skill reports a "weighted score," it should be grounded in this rubric.
 - Submission checks must report both the overall score and any component below 80.

@@ -82,6 +82,7 @@ A good rule of thumb:
 - put reusable workflow logic in skills
 
 The active Codex references for most projects should include workflow, content standards, scoring, logging, domain calibration, and journal calibration.
+Add `plugins/clo-author/references/content-invariants.md` when you want a hard numbered rule layer that critics can cite directly.
 
 # 7. Handle Legacy Claude Assets Carefully
 
@@ -98,6 +99,7 @@ Treat those as source material, not as the live Codex runtime.
 When you want newer template mechanics:
 
 - refresh `plugins/clo-author/skills/`, `plugins/clo-author/references/`, `templates/`, and guide docs
+- compare against `https://github.com/hugosantanna/clo-author` as the canonical upstream
 - preserve `paper/`, `scripts/`, `data/`, `quality_reports/`, `MEMORY.md`, and project-specific calibration edits
 - treat infrastructure refresh as a controlled maintenance task, not a content rewrite
 
@@ -107,6 +109,7 @@ This repo assumes explicit persistence:
 
 - plans in `quality_reports/plans/`
 - specs in `quality_reports/specs/`
+- decision records in `quality_reports/decisions/`
 - session logs in `quality_reports/session_logs/`
 - memory in `MEMORY.md`
 

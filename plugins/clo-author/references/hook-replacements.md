@@ -10,10 +10,13 @@ The Claude version relied on event hooks. The Codex version keeps the behavior, 
 | Pre-compact reminder | Keep plan, spec, session log, and memory on disk continuously |
 | Session restore after compaction | Resume by reading `AGENTS.md`, the latest plan, and the latest session log |
 | Post-merge reminder | Use the `tools` skill to review changes and extract durable lessons into `MEMORY.md` |
+| Post-edit linting | Run `plugins/clo-author/hooks/lint-scripts.sh [file|dir]` manually or from an external wrapper before code review |
 
-## Legacy Scripts
+## Utility Scripts
 
-The original hook scripts are preserved under `plugins/clo-author/hooks/legacy/` as optional reference utilities. They are not auto-wired into Codex.
+- `plugins/clo-author/hooks/legacy/` preserves the original Claude hook scripts for reference only.
+- `plugins/clo-author/hooks/lint-scripts.sh` is the active Codex-native lint helper.
+- `plugins/clo-author/hooks/post-edit-lint.sh` is an optional wrapper for environments that expose edited file paths through environment variables.
 
 ## Practical Recovery Routine
 
