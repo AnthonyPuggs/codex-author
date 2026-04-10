@@ -165,6 +165,7 @@ Use for small utility tasks:
 - compiling
 - bibliography validation
 - script linting
+- upstream comparison
 - session-state summaries
 - memory updates
 - template bootstrap
@@ -175,3 +176,13 @@ Typical prompts:
 - "Compile the paper."
 - "Check that every citation key exists."
 - "Summarize the latest plan and session log."
+- "Compare this repo against `upstream/main`."
+
+Useful upstream-maintenance commands:
+
+```bash
+git fetch upstream --tags
+git log --oneline main..upstream/main
+git diff --stat main...upstream/main
+git diff main...upstream/main -- plugins/clo-author guide templates
+```

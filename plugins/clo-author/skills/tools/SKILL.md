@@ -19,6 +19,7 @@ Use this skill for small, mechanical, or maintenance-focused workflows.
 - Compile paper or talk
 - Validate bibliography keys
 - Lint R, Python, or Julia scripts with `plugins/clo-author/hooks/lint-scripts.sh`
+- Compare this repo against the canonical upstream with `git fetch upstream --tags`, `git log --oneline main..upstream/main`, and `git diff --stat main...upstream/main`
 - Summarize project context from plans and logs
 - Extract durable lessons into `MEMORY.md`
 - Build or refresh docs when the repo changes materially
@@ -33,7 +34,12 @@ Use this skill for small, mechanical, or maintenance-focused workflows.
 4. For paper compilation, use the active `xelatex -> biber -> xelatex -> xelatex` chain from `AGENTS.md`.
 5. For template bootstrap, update placeholders and project-state stubs deliberately rather than mixing template defaults with project facts.
 6. For code linting, run `plugins/clo-author/hooks/lint-scripts.sh [file|dir]` and treat the output as advisory mechanical feedback before deeper review.
-7. For infrastructure refreshes, preserve user content under `paper/`, `scripts/`, `data/`, `quality_reports/`, `MEMORY.md`, and project-specific calibrations in the domain and journal profiles.
+7. For upstream comparison, prefer the read-only remote workflow:
+   - `git fetch upstream --tags`
+   - `git log --oneline main..upstream/main`
+   - `git diff --stat main...upstream/main`
+   - `git diff main...upstream/main -- <path>` for a targeted file or directory
+8. For infrastructure refreshes, preserve user content under `paper/`, `scripts/`, `data/`, `quality_reports/`, `MEMORY.md`, and project-specific calibrations in the domain and journal profiles.
 
 ## Outputs
 
