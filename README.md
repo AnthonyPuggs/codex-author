@@ -1,8 +1,8 @@
-# The Clo-Author for Codex
+# The Codex-Author: AI Research Architecture for Economics
+## Clo-Author for Codex
+> **Work in progress.** This repository is now being migrated from a Claude Code architecture to a Codex-native research architecture for empirical economics and other social science research.
 
-> **Work in progress.** This repository is now being migrated from a Claude Code architecture to a Codex-native research architecture for empirical social science.
-
-An open-source Codex workflow that turns your terminal into a research assistant for empirical social science: economics, finance, marketing, management, accounting, and public policy. It is designed to carry a project from literature review through analysis, writing, peer review simulation, and submission packaging.
+An open-source Codex research assistant for workflow for primarily empirical economics, although it can be adapted to other fields (finance, marketing, management, accounting, public policy, etc.) by adjusting the domain profile and journal profiles. It is designed to plan, implement and review approaches for your project from literature review through analysis, writing, peer review simulation, and submission packaging. It also requires human review of these research approaches, and is not a substitute.
 
 This repo keeps the research architecture that made the original Clo-Author effective, but re-expresses it in Codex-native primitives:
 
@@ -16,15 +16,17 @@ It is designed as a **hybrid template**: you can fork it as a starter repository
 **Original lineage:** [Pedro Sant'Anna's claude-code-my-workflow](https://github.com/pedrohcgs/claude-code-my-workflow), extended by Hugo Sant'Anna's Clo-Author and adapted here for Codex use.
 **Canonical upstream:** [hugosantanna/clo-author](https://github.com/hugosantanna/clo-author)
 
-This repository is the Codex-native port. Treat `hugosantanna/clo-author` as the upstream baseline for infrastructure refreshes and release comparisons; do not sync against stale downstream forks.
+This repository is the Codex-native port. Treat `hugosantanna/clo-author` as the upstream baseline for infrastructure refreshes and release comparisons; do not sync against stale downstream forks. My goal is to update Codex-Author regularly in line with new releases.
 
 ## Quick Start
 
-If you want the canonical Clo-Author upstream template and release history:
-
 ```bash
-gh repo fork hugosantanna/clo-author --clone
-cd clo-author
+#1. Fork and clone
+gh repo fork anthonypuggs/codex-author --clone
+cd codex-author
+
+2. Open Codex
+codex
 ```
 
 If you are working in this Codex port, use the current repository as your runtime and use the canonical upstream only as the comparison baseline for template maintenance.
@@ -35,13 +37,10 @@ Then open the repository in your Codex environment and start with a prompt like:
 
 The placeholders in `AGENTS.md` are intentional until you do that bootstrap step.
 
-Before relying on natural-language skill routing, run the activation smoke test described in `plugins/clo-author/references/runtime-activation.md`. On this Codex harness, the reliable fallback is a home-level skill link at `~/.agents/skills/clo-author`. You can create or verify it with:
+Codex reads the configuration, fills in your project details, and plans the approach. You approve the plan, it implements and runs review agents, and you review the results.
 
-```bash
-bash scripts/install_codex_skill_link.sh
-```
+Using **VS Code?** You can also download the Codex VS Code extension and work through the Codex chat panel (and the macOS Codex desktop app) instead. Everything works the same.
 
-Then restart Codex and confirm the 10 Clo-Author skills are present in a fresh session.
 
 From there, describe work in plain English:
 
@@ -54,7 +53,7 @@ From there, describe work in plain English:
 
 ### Contractor Mode
 
-You describe the task. Codex plans the work, uses specialized worker and critic roles, verifies outputs, and routes revisions until the task clears the relevant quality gate.
+You describe the task. Codex plans the work, uses specialised worker and critic roles, verifies outputs, and routes revisions until the task clears the relevant quality gate.
 
 ### Worker-Critic Pairs
 
@@ -81,13 +80,11 @@ The peer review workflow preserves the strongest part of the Clo-Author architec
 3. Blind methods referee
 4. Editorial synthesis with FATAL / ADDRESSABLE / TASTE classification
 
-Journal calibration is driven by `plugins/clo-author/references/journal-profiles.md`.
-
 ### Ten Codex Skills
 
 | Skill | Purpose |
 |------|---------|
-| `new-project` | Initialize a new research project and kick off the pipeline |
+| `new-project` | Initialise a new research project and kick off the pipeline |
 | `discover` | Research interview, literature review, data search, ideation |
 | `strategize` | Identification strategy and PAP workflows |
 | `analyze` | Data cleaning, estimation, robustness, figures, tables |
@@ -131,9 +128,9 @@ your-project/
 
 1. Fill in the placeholders and current project state in `AGENTS.md`.
 2. Edit `plugins/clo-author/references/domain-profile.md` for your field's journals, datasets, conventions, and identification strategies.
-3. Extend `plugins/clo-author/references/journal-profiles.md` if you need journals beyond the shipped profiles.
-4. Decide whether to keep all legacy migration material under `.claude/` and `plugins/clo-author/references/legacy-*`, or trim it after bootstrap.
-5. Customize or add skills under `plugins/clo-author/skills/` if your workflow has recurring domain-specific routines.
+3. Extend `plugins/clo-author/references/journal-profiles.md` if you need journals beyond the shipped profiles (which are mostly economics).
+4. Customize or add skills under `plugins/clo-author/skills/` if your workflow has recurring domain-specific routines.
+5. Decide whether to keep all legacy migration material under `.claude/` and `plugins/clo-author/references/legacy-*`, or trim it after bootstrap.
 
 ## Bootstrap a Working Project
 
@@ -171,9 +168,6 @@ The active operational references now include:
 - `plugins/clo-author/references/content-standards.md`
 - `plugins/clo-author/references/quality-scoring.md`
 - `plugins/clo-author/references/logging.md`
-- `plugins/clo-author/references/runtime-activation.md`
-
-If the activation smoke test fails, treat the session as blocked rather than assuming generic Codex behaviour is equivalent to Clo-Author.
 
 The original `.claude/` directory is still present in this repository as migration source material. It is no longer the active runtime surface.
 
@@ -186,19 +180,8 @@ The original `.claude/` directory is still present in this repository as migrati
 | R | Analysis and figures | [r-project.org](https://www.r-project.org/) |
 | gh CLI | GitHub operations | [cli.github.com](https://cli.github.com/) |
 
-Optional: Stata, Python, Julia, Quarto.
-
-## Guide
-
-The Quarto guide in `guide/` has been rewritten for the Codex architecture:
-
-- `guide/index.qmd` — quick start
-- `guide/user-guide.qmd` — how to work phase by phase
-- `guide/agents.qmd` — role catalog
-- `guide/architecture.qmd` — control-plane and delegation model
-- `guide/customization.qmd` — how to adapt the repo
-- `guide/reference.qmd` — workflow reference
+Optional: Python, Julia, Quarto.
 
 ## License
 
-MIT License. Fork it, customize it, and adapt it to your research workflow.
+MIT License.
