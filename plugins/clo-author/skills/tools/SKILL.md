@@ -53,6 +53,12 @@ Cross-check `\cite{}` keys against `Bibliography_base.bib` and report:
 
 Use `plugins/clo-author/references/runtime-activation.md` as the contract and report whether the session is active or blocked before claiming the plugin is available.
 
+If the home-level skill link is missing, install or verify it with:
+
+```bash
+bash scripts/install_codex_skill_link.sh
+```
+
 ### Journal / Context Summary
 
 Summarise the latest plan, session log, and research journal when the user asks for current state or recovery context.

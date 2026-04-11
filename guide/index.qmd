@@ -27,9 +27,15 @@ Use your preferred Codex environment from the project root.
 
 Before relying on natural-language skill routing, run the activation smoke test from `plugins/clo-author/references/runtime-activation.md`.
 
+On this Codex harness, the reliable machine-level fallback is:
+
+```bash
+bash scripts/install_codex_skill_link.sh
+```
+
 Confirm in a fresh session that:
 
-- the repo-local `clo-author` plugin is visible
+- `~/.agents/skills/clo-author` points to this repo's skill bundle
 - the 10 skill names are present
 
 If that check fails, treat the runtime as blocked and use `AGENTS.md` plus the active references as the fallback control plane until the plugin is loaded.

@@ -7,7 +7,7 @@ subtitle: "How to Use the Codex Version"
 
 You describe the task in plain English. Codex maps that request onto the Clo-Author skills and references.
 
-Before relying on that mapping, run the activation smoke test in `plugins/clo-author/references/runtime-activation.md`. If the repo-local plugin is not visible in the session, treat the runtime as blocked instead of assuming fallback Codex behaviour preserves the Clo-Author gates.
+Before relying on that mapping, run the activation smoke test in `plugins/clo-author/references/runtime-activation.md`. If the `~/.agents/skills/clo-author` link is missing or a fresh session still does not expose the Clo-Author skills, treat the runtime as blocked instead of assuming fallback Codex behaviour preserves the Clo-Author gates.
 
 | You Do | The Architecture Handles |
 |--------|--------------------------|

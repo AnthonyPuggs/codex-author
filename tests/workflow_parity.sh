@@ -37,10 +37,24 @@ expect_file \
   "plugins/clo-author/references/runtime-activation.md" \
   "active runtime activation reference must exist"
 
+expect_file \
+  "scripts/install_codex_skill_link.sh" \
+  "Codex home-level skill-link installer must exist"
+
 expect_match \
   "AGENTS.md" \
   'runtime-activation\.md' \
   "AGENTS.md must list the active runtime activation reference"
+
+expect_match \
+  "plugins/clo-author/references/runtime-activation.md" \
+  "~/.agents/skills/clo-author" \
+  "runtime activation contract must document the Codex home-level skill link"
+
+expect_match \
+  "plugins/clo-author/references/runtime-activation.md" \
+  'native skill discovery scans `~/.agents/skills/` at startup' \
+  "runtime activation contract must state the actual Codex discovery path"
 
 expect_match \
   "plugins/clo-author/references/codex-workflow.md" \
@@ -84,12 +98,12 @@ expect_match \
 
 expect_match \
   "README.md" \
-  "activation smoke test" \
-  "README must document the runtime activation smoke test"
+  "~/.agents/skills/clo-author" \
+  "README must document the Codex home-level skill link fallback"
 
 expect_match \
   "guide/index.qmd" \
-  "activation smoke test" \
-  "guide quick start must mention the runtime activation smoke test"
+  "~/.agents/skills/clo-author" \
+  "guide quick start must mention the Codex home-level skill link fallback"
 
 echo "workflow parity checks passed"

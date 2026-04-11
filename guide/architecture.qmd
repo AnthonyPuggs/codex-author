@@ -11,8 +11,9 @@ The Codex-native Clo-Author has six active layers:
 |-------|----------|---------|
 | Root constitution | `AGENTS.md` | Always-loaded project rules |
 | Runtime contract | `plugins/clo-author/references/runtime-activation.md` | Defines activation and blocked-runtime semantics |
-| Plugin manifest | `plugins/clo-author/.codex-plugin/plugin.json` | Registers the repo-local plugin |
+| Plugin manifest | `plugins/clo-author/.codex-plugin/plugin.json` | Stores repo-local metadata for the skill bundle |
 | Skills | `plugins/clo-author/skills/` | Natural-language workflows |
+| Home discovery link | `~/.agents/skills/clo-author` | Codex startup discovery path for the Clo-Author skill bundle |
 | References | `plugins/clo-author/references/` | Domain, journal, workflow, and role guidance |
 | File-backed memory | `MEMORY.md`, `quality_reports/` | Durable context across sessions |
 

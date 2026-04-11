@@ -30,7 +30,8 @@ This repository ships in **template mode**. The placeholders and current-state s
 
 ## Codex Operating Model
 
-- The active control plane is `AGENTS.md` plus the repo-local plugin at `plugins/clo-author/`
+- The active control plane is `AGENTS.md` plus the Clo-Author skill bundle at `plugins/clo-author/`
+- In Codex, native skill discovery should expose that bundle through `~/.agents/skills/clo-author`
 - The canonical Clo-Author upstream is `https://github.com/hugosantanna/clo-author`; use it as the infrastructure baseline for sync work
 - Skills live in `plugins/clo-author/skills/` and trigger from natural-language requests
 - Shared references live in `plugins/clo-author/references/`

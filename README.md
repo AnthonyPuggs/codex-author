@@ -35,7 +35,13 @@ Then open the repository in your Codex environment and start with a prompt like:
 
 The placeholders in `AGENTS.md` are intentional until you do that bootstrap step.
 
-Before relying on natural-language skill routing, run the activation smoke test described in `plugins/clo-author/references/runtime-activation.md`. In practice, that means confirming the repo-local `clo-author` plugin is visible in Codex and that the 10 skill names are present in a fresh session.
+Before relying on natural-language skill routing, run the activation smoke test described in `plugins/clo-author/references/runtime-activation.md`. On this Codex harness, the reliable fallback is a home-level skill link at `~/.agents/skills/clo-author`. You can create or verify it with:
+
+```bash
+bash scripts/install_codex_skill_link.sh
+```
+
+Then restart Codex and confirm the 10 Clo-Author skills are present in a fresh session.
 
 From there, describe work in plain English:
 

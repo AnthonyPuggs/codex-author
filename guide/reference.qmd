@@ -18,7 +18,7 @@ subtitle: "Skills, Prompt Patterns, and Outputs"
 | `submit` | "Prepare the replication package" | Package + audit | `/submit` |
 | `tools` | "Compile the paper" | Utility output or bootstrap/refresh checklist | `/tools` |
 
-Before relying on any of the skills above, run the activation smoke test from `plugins/clo-author/references/runtime-activation.md`.
+Before relying on any of the skills above, run the activation smoke test from `plugins/clo-author/references/runtime-activation.md` and verify `~/.agents/skills/clo-author` if the skill surface is missing.
 
 # `new-project`
 
