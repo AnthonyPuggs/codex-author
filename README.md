@@ -41,6 +41,8 @@ Codex reads the configuration, fills in your project details, and plans the appr
 
 Using **VS Code?** You can also download the Codex VS Code extension and work through the Codex chat panel (and the macOS Codex desktop app) instead. Everything works the same.
 
+If a fresh Codex session does not expose the Clo-Author skills automatically, install the machine-level fallback with `bash scripts/install_codex_skill_link.sh` and confirm that `~/.agents/skills/clo-author` points to this repo's skill bundle.
+
 
 From there, describe work in plain English:
 

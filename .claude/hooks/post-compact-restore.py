@@ -15,6 +15,7 @@ import os
 import sys
 from pathlib import Path
 from datetime import datetime
+from typing import Any, Dict, Optional
 
 # Colors for terminal output
 CYAN = "\033[0;36m"
@@ -37,7 +38,7 @@ def get_session_dir() -> Path:
     return session_dir
 
 
-def read_pre_compact_state() -> dict | None:
+def read_pre_compact_state() -> Optional[Dict[str, Any]]:
     """Read and delete the pre-compact state file."""
     session_dir = get_session_dir()
     state_file = session_dir / "pre-compact-state.json"
@@ -53,45 +54,43 @@ def read_pre_compact_state() -> dict | None:
         return None
 
 
-def find_active_plan(project_dir: str) -> dict | None:
-    """Find the most recent plan file and extract its status."""
+def find_active_plan(project_dir: str) -> Optional[Dict[str, Any]]:
+    """Find the most recent non-completed plan."""
     plans_dir = Path(project_dir) / "quality_reports" / "plans"
     if not plans_dir.exists():
         return None
 
-    # Get most recent plan file
     plan_files = sorted(plans_dir.glob("*.md"), key=lambda f: f.stat().st_mtime, reverse=True)
-    if not plan_files:
-        return None
+    for plan_file in plan_files[:3]:
+        content = plan_file.read_text()
+        content_upper = content.upper()
 
-    latest_plan = plan_files[0]
-    content = latest_plan.read_text()
+        if "COMPLETED" in content_upper:
+            continue
 
-    # Extract status from plan content
-    status = "unknown"
-    if "COMPLETED" in content.upper():
-        status = "completed"
-    elif "APPROVED" in content.upper():
         status = "in_progress"
-    elif "DRAFT" in content.upper():
-        status = "draft"
+        if "APPROVED" in content_upper:
+            status = "approved"
+        elif "DRAFT" in content_upper:
+            status = "draft"
 
-    # Extract current task if present
-    current_task = None
-    for line in content.split("\n"):
-        if "- [ ]" in line:  # First unchecked task
-            current_task = line.replace("- [ ]", "").strip()
-            break
+        current_task = None
+        for line in content.split("\n"):
+            if "- [ ]" in line:
+                current_task = line.replace("- [ ]", "").strip()
+                break
 
-    return {
-        "plan_path": str(latest_plan),
-        "plan_name": latest_plan.name,
-        "status": status,
-        "current_task": current_task
-    }
+        return {
+            "plan_path": str(plan_file),
+            "plan_name": plan_file.name,
+            "status": status,
+            "current_task": current_task
+        }
+
+    return None
 
 
-def find_recent_session_log(project_dir: str) -> dict | None:
+def find_recent_session_log(project_dir: str) -> Optional[Dict[str, str]]:
     """Find the most recent session log."""
     logs_dir = Path(project_dir) / "quality_reports" / "session_logs"
     if not logs_dir.exists():
@@ -108,9 +107,9 @@ def find_recent_session_log(project_dir: str) -> dict | None:
 
 
 def format_restoration_message(
-    pre_compact_state: dict | None,
-    plan_info: dict | None,
-    session_log: dict | None
+    pre_compact_state: Optional[Dict[str, Any]],
+    plan_info: Optional[Dict[str, Any]],
+    session_log: Optional[Dict[str, str]]
 ) -> str:
     """Format the context restoration message for Claude."""
     lines = []
