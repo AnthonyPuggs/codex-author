@@ -1,6 +1,6 @@
 # The Codex-Author: AI Research Architecture for Economics
 ## Clo-Author for Codex
-> **Work in progress.** This repository is now being migrated from a Claude Code architecture to a Codex-native research architecture for empirical economics and other social science research.
+> **Work in progress.** This repository is now being migrated from a Claude Code architecture to a Codex-native research architecture for empirical economics and other social science research. This is extremely new and still WIP, you will experience some differences from clo-author but I am actively updating this repo.
 
 An open-source Codex research assistant for workflow for primarily empirical economics, although it can be adapted to other fields (finance, marketing, management, accounting, public policy, etc.) by adjusting the domain profile and journal profiles. It is designed to plan, implement and review approaches for your project from literature review through analysis, writing, peer review simulation, and submission packaging. It also requires human review of these research approaches, and is not a substitute.
 
