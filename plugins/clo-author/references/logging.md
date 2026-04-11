@@ -26,12 +26,17 @@ Entry format:
 ### YYYY-MM-DD HH:MM — [Role or Workflow]
 **Phase:** [Discovery/Strategy/Execution/Peer Review/Presentation/Infrastructure]
 **Target:** [file, artifact, or topic]
+**Round:** [1/2/3 or N/A]
 **Score:** [XX/100 or PASS/FAIL or N/A]
+**Approval:** [APPROVED / BLOCKED / ADVISORY / N/A]
 **Verdict:** [one-line outcome]
+**Next:** [next actor or next required step]
 **Report:** [path to the detailed artifact]
 ```
 
 Create the file on first use. One entry per major role invocation or workflow transition.
+
+When the entry records a worker-critic round, include any blocking issue identifiers in the verdict line or the linked report so the next round can resume without chat history.
 
 ## 3. Decision Records
 
@@ -50,3 +55,4 @@ Use `templates/decision-record.md` for the default structure.
 - Keep logs factual and resumable.
 - When a task materially changes direction, record the decision and why.
 - If a task is interrupted, the latest plan plus the latest session log should be enough to resume work.
+- Worker-critic loops must record round number, approval state, next actor, and report path every time.

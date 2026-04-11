@@ -123,6 +123,7 @@ cd paper/talks && TEXINPUTS=../preambles:$TEXINPUTS xelatex -interaction=nonstop
 - `plugins/clo-author/references/content-standards.md` -- table, figure, PDF, and exploration standards
 - `plugins/clo-author/references/quality-scoring.md` -- weighted scoring rubric, thresholds, and critic severity
 - `plugins/clo-author/references/logging.md` -- session-log and research-journal formats
+- `plugins/clo-author/references/runtime-activation.md` -- plugin activation contract and startup smoke test
 - `plugins/clo-author/references/agent-catalog.md` -- active role catalog for Codex delegation
 - `plugins/clo-author/references/domain-profile.md` -- field calibration
 - `plugins/clo-author/references/journal-profiles.md` -- journal-specific peer-review calibration

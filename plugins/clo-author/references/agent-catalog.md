@@ -36,6 +36,26 @@ Detailed prompt copies from the Claude-era architecture are preserved under `plu
 - Preferred parallelism is **2-4 concurrent roles**. Beyond that, orchestration overhead usually dominates.
 - If a worker-critic pair fails to converge after 3 rounds, escalate rather than looping indefinitely.
 
+## Approval Rules
+
+- If a creator artifact exists without a critic score, it is not approved.
+- No artifact advances to the next phase without its critic's score >= 80.
+- A creator cannot self-score its own work.
+- Critics do not edit files or produce replacement artefacts during review.
+- Every worker-critic round should leave a saved report path plus a research-journal entry.
+
+## Phase Dependencies
+
+| Phase | Requires |
+|------|----------|
+| Discovery | Research idea |
+| Strategy | Literature review or data assessment |
+| Execution (Code) | Approved strategy artefact |
+| Execution (Write) | Approved code artefact |
+| Peer Review | Approved paper plus approved code |
+| Submission | Verifier pass plus final weighted gate |
+| Presentation | Approved paper |
+
 ## Escalation Table
 
 | Pair | Escalate To |
@@ -47,6 +67,17 @@ Detailed prompt copies from the Claude-era architecture are preserved under `plu
 | Coder + coder-critic | Strategist |
 | Writer + writer-critic | Strategist or User |
 | Storyteller + storyteller-critic | Writer |
+
+## Three-Strikes Protocol
+
+```text
+Round 1: critic reviews -> worker revises
+Round 2: critic reviews -> worker revises
+Round 3: critic reviews -> worker revises
+Still failing? Escalate.
+```
+
+Escalation is part of the workflow, not a special case. When a pair deadlocks, the next actor should be explicit in the research journal rather than inferred from chat context.
 
 ## Default Artifact Paths
 

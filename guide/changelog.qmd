@@ -3,6 +3,24 @@ title: "What's New"
 subtitle: "Codex Port Release History"
 ---
 
+# v4.2.0 — Workflow Parity Restoration {#v42}
+
+*Released 2026-04-11*
+
+This release restores the missing worker-critic execution contract in the active Codex surface instead of leaving it stranded in legacy reference material.
+
+## Runtime Activation
+
+- The repo-local `clo-author` plugin now installs by default from the local marketplace entry
+- Added `plugins/clo-author/references/runtime-activation.md`
+- Quick start now includes an activation smoke test before relying on natural-language skill routing
+
+## Active Enforcement Layer
+
+- Promoted critic gating, phase blocking, and three-round escalation into the active references
+- Expanded the active research-journal schema with round number, approval state, and next actor
+- Rebuilt the active skill files so they again specify dispatch, review, and save semantics explicitly
+
 # v4.1.0 — Canonical Upstream Realignment and Enforcement Parity {#v41}
 
 *Released 2026-04-11*

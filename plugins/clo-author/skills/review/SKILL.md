@@ -1,15 +1,16 @@
 ---
 name: review
-description: Review manuscripts, code, methods, talks, and replication packages using worker-critic or editor-referee workflows. Use when the user asks for a code review, paper review, methods audit, proofreading pass, peer review simulation, stress test, or weighted quality score.
+description: All quality reviews for manuscripts, methods, code, talks, and replication packages. Use when the user asks for code review, paper review, causal audit, proofreading, peer review simulation, stress testing, or a weighted quality score.
 ---
 
 # Review
 
-Use this skill for quality control and peer-review simulation.
+Unified review workflow that routes to the appropriate critic or referee roles based on the target and requested mode.
 
 ## Read First
 
 - `AGENTS.md`
+- `plugins/clo-author/references/runtime-activation.md`
 - `plugins/clo-author/references/codex-workflow.md`
 - `plugins/clo-author/references/content-invariants.md`
 - `plugins/clo-author/references/quality-scoring.md`
@@ -18,33 +19,85 @@ Use this skill for quality control and peer-review simulation.
 - `plugins/clo-author/references/domain-profile.md`
 - `plugins/clo-author/references/journal-profiles.md` when journal calibration is requested
 
-## Modes
+## Routing Logic
 
-- Code review
-- Manuscript review
-- Methods-only review
-- Proofread / polish
-- Peer review simulation
-- Stress test
-- Cross-language replication review
-- Full weighted review
+### Auto-detect by target
 
-## Procedure
+- manuscript source -> comprehensive manuscript review
+- R, Python, Stata, or Julia script -> code review
+- talk source -> storyteller-critic audit
 
-1. Detect the review mode from the request and target files.
-2. For code: run `plugins/clo-author/hooks/lint-scripts.sh [file|dir]` first, then use coder-critic.
-3. For manuscripts and talks: apply `plugins/clo-author/references/content-invariants.md` alongside the critic workflow and cite invariant numbers when the issue is mechanical and non-negotiable.
-4. For manuscripts: combine writer-critic, strategist-critic, and Verifier as needed.
-5. For peer review:
-   - run Editor first for desk review and referee assignment
-   - run domain-referee and methods-referee independently
-   - have Editor synthesize the decision into FATAL / ADDRESSABLE / TASTE
-6. When reporting a weighted score, ground it in `plugins/clo-author/references/quality-scoring.md`.
-7. For journal-specific peer review, calibrate with `plugins/clo-author/references/journal-profiles.md`.
-8. Save findings before proposing revisions, and append a research-journal entry when the review changes project status or produces a formal gate outcome.
+### Explicit modes
+
+- code review
+- manuscript review
+- methods-only review
+- proofread / polish
+- peer review simulation
+- hostile stress test
+- cross-language replication review
+- full weighted review
+
+## Mode Details
+
+### Comprehensive Manuscript Review
+
+Dispatch in parallel when appropriate:
+
+1. strategist-critic for the causal design audit
+2. writer-critic for manuscript polish
+3. Verifier for mechanical checks
+
+Compute the weighted outcome using `plugins/clo-author/references/quality-scoring.md`.
+
+### Code Review
+
+1. Run `plugins/clo-author/hooks/lint-scripts.sh [file|dir]` first.
+2. Dispatch coder-critic in read-only mode.
+3. Save the report and quality outcome before proposing revisions.
+
+### Methods-Only Review
+
+Dispatch strategist-critic standalone and run the four-phase econometric review.
+
+### Proofread / Polish
+
+Dispatch writer-critic standalone, with `content-invariants.md` as the hard invariant layer for mechanical issues.
+
+### Full Peer Review
+
+The peer-review route is explicit: editor desk review -> referee dispatch -> editorial decision.
+
+1. Editor runs a desk review and assigns referees.
+2. domain-referee and methods-referee review independently and blindly.
+3. Editor synthesizes the reports into FATAL / ADDRESSABLE / TASTE and produces the decision memo.
+
+Save outputs to `quality_reports/` with separate artefacts for desk review, referee reports, and the editorial decision.
+
+### Hostile Stress Test
+
+Use the same peer-review routing but instruct the editor to select more adversarial calibration when the user asks for a stress test.
+
+### Cross-Language Replication Review
+
+If the user asks for replication review:
+
+- dispatch a second implementation in the requested language
+- review both implementations
+- compare output parity against the active tolerances before issuing a verdict
+
+## Reporting Rules
+
+- For manuscripts and talks, cite invariant numbers when the issue is mechanical and non-negotiable.
+- When reporting a weighted score, ground it in the active scoring rubric.
+- Save findings before proposing revisions.
+- Append a research-journal entry whenever the review changes project status or produces a formal gate outcome.
 
 ## Outputs
 
 - Review memo in `quality_reports/`
-- Weighted score or pass/fail result when applicable, grounded in the active scoring rubric
-- Clear next-step recommendation
+- Weighted score or pass/fail result when applicable
+- Peer-review decision memo when the editor/referee flow runs
+- Clear next-step recommendation grounded in the saved review artefacts
+
+Do not edit source files while running the review workflow. Review first, then route revisions explicitly.

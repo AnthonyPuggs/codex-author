@@ -7,6 +7,8 @@ subtitle: "How to Use the Codex Version"
 
 You describe the task in plain English. Codex maps that request onto the Clo-Author skills and references.
 
+Before relying on that mapping, run the activation smoke test in `plugins/clo-author/references/runtime-activation.md`. If the repo-local plugin is not visible in the session, treat the runtime as blocked instead of assuming fallback Codex behaviour preserves the Clo-Author gates.
+
 | You Do | The Architecture Handles |
 |--------|--------------------------|
 | Describe the task | Skill selection and reference loading |
@@ -101,8 +103,9 @@ For non-trivial work, Codex should:
 2. save a plan to `quality_reports/plans/`
 3. produce any required pre-flight report before strategy or code generation
 4. execute
-5. verify
-6. save the outcome
+5. route through the paired critic until the active gate is cleared or the pair escalates
+6. verify
+7. save the outcome
 
 ## File-Backed Memory
 

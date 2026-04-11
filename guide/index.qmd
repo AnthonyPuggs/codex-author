@@ -23,7 +23,18 @@ If you are working in this Codex port instead, keep the current repository as th
 
 Use your preferred Codex environment from the project root.
 
-### 3. Start with `AGENTS.md`
+### 3. Run the activation smoke test
+
+Before relying on natural-language skill routing, run the activation smoke test from `plugins/clo-author/references/runtime-activation.md`.
+
+Confirm in a fresh session that:
+
+- the repo-local `clo-author` plugin is visible
+- the 10 skill names are present
+
+If that check fails, treat the runtime as blocked and use `AGENTS.md` plus the active references as the fallback control plane until the plugin is loaded.
+
+### 4. Start with `AGENTS.md`
 
 Prompt Codex with:
 
@@ -31,7 +42,7 @@ Prompt Codex with:
 
 The placeholders in `AGENTS.md` are intentional until that bootstrap step. This repository ships as a template first and becomes a working project when you fill them in.
 
-### 4. Work in plain English
+### 5. Work in plain English
 
 - "Review the literature on hospital consolidation."
 - "Find the best public datasets for teacher pay and mobility."
@@ -46,6 +57,7 @@ The placeholders in `AGENTS.md` are intentional until that bootstrap step. This 
 - saved plans and session logs replace compaction-hook assumptions
 - legacy `.claude/` files are kept only as migration source material
 - active scoring, logging, and content standards live under `plugins/clo-author/references/`
+- runtime activation now has an explicit smoke test instead of being assumed
 
 ## The Core Workflow
 

@@ -35,6 +35,8 @@ Then open the repository in your Codex environment and start with a prompt like:
 
 The placeholders in `AGENTS.md` are intentional until you do that bootstrap step.
 
+Before relying on natural-language skill routing, run the activation smoke test described in `plugins/clo-author/references/runtime-activation.md`. In practice, that means confirming the repo-local `clo-author` plugin is visible in Codex and that the 10 skill names are present in a fresh session.
+
 From there, describe work in plain English:
 
 - "Review the literature on Medicaid crowd-out"
@@ -163,6 +165,9 @@ The active operational references now include:
 - `plugins/clo-author/references/content-standards.md`
 - `plugins/clo-author/references/quality-scoring.md`
 - `plugins/clo-author/references/logging.md`
+- `plugins/clo-author/references/runtime-activation.md`
+
+If the activation smoke test fails, treat the session as blocked rather than assuming generic Codex behaviour is equivalent to Clo-Author.
 
 The original `.claude/` directory is still present in this repository as migration source material. It is no longer the active runtime surface.
 

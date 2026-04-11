@@ -1,7 +1,7 @@
 {
   "name": "clo-author",
-  "version": "4.1.0",
-  "description": "Codex-native research architecture for empirical social science, from literature review to journal submission.",
+  "version": "4.2.0",
+  "description": "Codex-native research architecture for empirical social science, with default-installed workflow skills, critic gates, and explicit runtime activation checks.",
   "author": {
     "name": "Hugo Sant'Anna and Codex port contributors",
     "url": "https://github.com/hugosantanna/clo-author"
@@ -22,7 +22,7 @@
   "interface": {
     "displayName": "Clo-Author",
     "shortDescription": "Empirical social-science research workflows for Codex",
-    "longDescription": "Bring the canonical Clo-Author research workflow into Codex through natural-language skills, file-backed memory, worker-critic quality gates, and journal-calibrated review references.",
+    "longDescription": "Bring the canonical Clo-Author research workflow into Codex through repo-local skills that install by default, file-backed memory, explicit worker-critic gates, and a required runtime activation smoke test.",
     "developerName": "Hugo Sant'Anna and Codex port contributors",
     "category": "Coding",
     "capabilities": [
