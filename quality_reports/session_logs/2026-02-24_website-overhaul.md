@@ -11,7 +11,7 @@ Continuing from the previous session that reoriented claude-code-my-workflow fro
 
 | Action | File | Notes |
 |--------|------|-------|
-| CLONE | `/Users/hsantanna/Work/Research/hsantanna-site-local/` | Full site repo |
+| CLONE | `hsantanna-site-local/` | Full site repo |
 | REWRITE | `Gemfile` | Dropped `github-pages`, added `jekyll ~> 4.4` + `minimal-mistakes-jekyll` + `logger`/`csv`/`base64` |
 | REWRITE | `_config.yml` | `theme: minimal-mistakes-jekyll`, updated bio/email, added nav |
 | CREATE | `assets/css/main.scss` | Navy/gold palette, Georgia serif, JetBrains Mono code, custom classes |

@@ -52,8 +52,8 @@
       "Bash(echo \"meta-governance.md: 252 -> 20 lines \\(saved 232\\)\")"
     ],
     "additionalDirectories": [
-      "/Users/hsantanna/repos/clo-author/.claude/rules/archive",
-      "/Users/hsantanna/repos/clo-author/.claude/rules"
+      ".claude/references",
+      ".claude/rules"
     ]
   },
   "hooks": {
