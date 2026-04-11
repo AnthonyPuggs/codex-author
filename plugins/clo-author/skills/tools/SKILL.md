@@ -1,49 +1,84 @@
 ---
 name: tools
-description: Run utility workflows for compiling papers, validating bibliographies, inspecting context status, maintaining project memory, bootstrapping the template into a working project, and refreshing infrastructure docs. Use when the user asks to compile, validate citations, summarize session state, initialize the template, extract learnings, or run utility checks.
+description: Utility workflows for compile, bibliography validation, journal/log inspection, runtime smoke tests, memory updates, bootstrap tasks, and infrastructure refresh. Use when the user asks for mechanical project maintenance rather than substantive research work.
 ---
 
 # Tools
 
-Use this skill for small, mechanical, or maintenance-focused workflows.
+Run lightweight utility workflows for project maintenance and infrastructure.
 
 ## Read First
 
 - `AGENTS.md`
+- `plugins/clo-author/references/runtime-activation.md`
 - `plugins/clo-author/references/codex-workflow.md`
 - `plugins/clo-author/references/logging.md`
-- `MEMORY.md` when the task concerns learning or continuity
+- `MEMORY.md` when the task concerns durable learnings
 
-## Common Subroutines
+## Supported Subroutines
 
-- Compile paper or talk
-- Validate bibliography keys
-- Lint R, Python, or Julia scripts with `plugins/clo-author/hooks/lint-scripts.sh`
-- Compare this repo against the canonical upstream with `git fetch upstream --tags`, `git log --oneline main..upstream/main`, and `git diff --stat main...upstream/main`
-- Summarize project context from plans and logs
-- Extract durable lessons into `MEMORY.md`
-- Build or refresh docs when the repo changes materially
-- Bootstrap the template into a filled-in working project
-- Refresh plugin and documentation infrastructure without overwriting user research content
+- commit preparation
+- compile
+- validate bibliography
+- journal timeline summary
+- context summary
+- deploy docs
+- learn
+- runtime activation smoke test
+- bootstrap template
+- upgrade infrastructure
 
-## Procedure
+## Common Procedures
 
-1. Keep these tasks lightweight; avoid unnecessary orchestration.
-2. Prefer deterministic commands and scripts over free-form reasoning when possible.
-3. When updating memory, write concise `[LEARN:*]` entries grounded in actual mistakes or durable workflow discoveries.
-4. For paper compilation, use the active `xelatex -> biber -> xelatex -> xelatex` chain from `AGENTS.md`.
-5. For template bootstrap, update placeholders and project-state stubs deliberately rather than mixing template defaults with project facts.
-6. For code linting, run `plugins/clo-author/hooks/lint-scripts.sh [file|dir]` and treat the output as advisory mechanical feedback before deeper review.
-7. For upstream comparison, prefer the read-only remote workflow:
-   - `git fetch upstream --tags`
-   - `git log --oneline main..upstream/main`
-   - `git diff --stat main...upstream/main`
-   - `git diff main...upstream/main -- <path>` for a targeted file or directory
-8. For infrastructure refreshes, preserve user content under `paper/`, `scripts/`, `data/`, `quality_reports/`, `MEMORY.md`, and project-specific calibrations in the domain and journal profiles.
+### Compile
 
-## Outputs
+Use the active paper chain:
 
-- Updated `MEMORY.md` when requested
-- Compile or validation output summarized back to the user
-- Bootstrap or infrastructure-refresh checklist when requested
-- Short maintenance note in `quality_reports/` only when the utility run is substantial
+```bash
+cd paper && TEXINPUTS=preambles:$TEXINPUTS xelatex -interaction=nonstopmode main.tex
+biber main
+TEXINPUTS=preambles:$TEXINPUTS xelatex -interaction=nonstopmode main.tex
+TEXINPUTS=preambles:$TEXINPUTS xelatex -interaction=nonstopmode main.tex
+```
+
+### Validate Bibliography
+
+Cross-check `\cite{}` keys against `Bibliography_base.bib` and report:
+
+- missing keys
+- unused keys
+- duplicates
+
+### Runtime Activation Smoke Test
+
+Use `plugins/clo-author/references/runtime-activation.md` as the contract and report whether the session is active or blocked before claiming the plugin is available.
+
+If the home-level skill link is missing, install or verify it with:
+
+```bash
+bash scripts/install_codex_skill_link.sh
+```
+
+### Journal / Context Summary
+
+Summarise the latest plan, session log, and research journal when the user asks for current state or recovery context.
+
+### Learn
+
+When updating memory, write concise `[LEARN:*]` entries grounded in actual mistakes or durable workflow discoveries.
+
+### Upgrade Infrastructure
+
+Refresh the Codex-native infrastructure selectively:
+
+- update `plugins/clo-author/skills/`
+- update `plugins/clo-author/references/`
+- update templates and guide docs
+- preserve user research content under `paper/`, `scripts/`, `data/`, `quality_reports/`, and `MEMORY.md`
+
+## Principles
+
+- Keep these tasks lightweight.
+- Prefer deterministic commands and scripts.
+- Treat compile, lint, and activation checks as evidence-producing workflows.
+- Never overwrite user research content during infrastructure refreshes.

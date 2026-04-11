@@ -5,13 +5,15 @@ subtitle: "How the Codex Version Works"
 
 # System Overview
 
-The Codex-native Clo-Author has five active layers:
+The Codex-native Clo-Author has six active layers:
 
 | Layer | Location | Purpose |
 |-------|----------|---------|
 | Root constitution | `AGENTS.md` | Always-loaded project rules |
-| Plugin manifest | `plugins/clo-author/.codex-plugin/plugin.json` | Registers the repo-local plugin |
+| Runtime contract | `plugins/clo-author/references/runtime-activation.md` | Defines activation and blocked-runtime semantics |
+| Plugin manifest | `plugins/clo-author/.codex-plugin/plugin.json` | Stores repo-local metadata for the skill bundle |
 | Skills | `plugins/clo-author/skills/` | Natural-language workflows |
+| Home discovery link | `~/.agents/skills/clo-author` | Codex startup discovery path for the Clo-Author skill bundle |
 | References | `plugins/clo-author/references/` | Domain, journal, workflow, and role guidance |
 | File-backed memory | `MEMORY.md`, `quality_reports/` | Durable context across sessions |
 
@@ -37,8 +39,9 @@ The active role catalog is in `plugins/clo-author/references/agent-catalog.md`.
 3. Save a plan to `quality_reports/plans/`.
 4. Execute with the appropriate worker role.
 5. Review with the paired critic.
-6. Verify outputs mechanically.
-7. Save the outcome and next step.
+6. If score < 80, revise and re-review up to the active round limit.
+7. Verify outputs mechanically.
+8. Save the outcome and next step.
 
 # Delegation Policy
 
@@ -60,6 +63,8 @@ Codex sub-agents are useful, but only when the work is truly parallelizable.
 | Talks | Advisory only |
 
 The active scoring rubric lives in `plugins/clo-author/references/quality-scoring.md`. Mechanical checks such as `plugins/clo-author/hooks/lint-scripts.sh` are advisory only.
+
+No artefact advances without its paired approval state. The active gating and escalation rules live in `plugins/clo-author/references/codex-workflow.md` and `plugins/clo-author/references/agent-catalog.md`.
 
 # Persistence Model
 

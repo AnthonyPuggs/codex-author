@@ -1,15 +1,16 @@
 ---
 name: submit
-description: Prepare a paper for submission, including journal targeting, replication packaging, replication audits, and final quality-gate checks. Use when the user asks to target journals, build an AEA-style package, audit replication readiness, or run the final submission gate.
+description: Submission workflows for journal targeting, replication packaging, audits, and the final gate. Use when the user asks for journal recommendations, replication-package assembly, audit, or final submission readiness.
 ---
 
 # Submit
 
-Use this skill for the final packaging and gatekeeping stage.
+Run the submission pipeline with explicit modes for targeting, packaging, auditing, and the final gate.
 
 ## Read First
 
 - `AGENTS.md`
+- `plugins/clo-author/references/runtime-activation.md`
 - `plugins/clo-author/references/codex-workflow.md`
 - `plugins/clo-author/references/quality-scoring.md`
 - `plugins/clo-author/references/logging.md`
@@ -17,18 +18,69 @@ Use this skill for the final packaging and gatekeeping stage.
 - `plugins/clo-author/references/domain-profile.md`
 - `plugins/clo-author/references/journal-profiles.md`
 
-## Procedure
+## Modes
 
-1. Determine whether the user needs targeting, packaging, auditing, or the full final gate.
-2. For journal targeting, use the domain profile and current paper state to rank realistic targets.
-3. For packaging, assemble `paper/replication/` with ordered scripts, README, and provenance notes.
-4. For audits, use Verifier in submission mode.
-5. For the final gate, apply `plugins/clo-author/references/quality-scoring.md` and ensure the overall score meets 95 and every component meets 80.
-6. Record the audit or gate outcome in the active logging surface when the task produces a formal submission decision.
+- target
+- package
+- audit
+- final
+
+## Target
+
+Recommend realistic journals using:
+
+- contribution fit
+- methods fit
+- audience fit
+- desk-reject risk
+- recent journal publication patterns when current information matters
+
+Save the recommendation memo in `quality_reports/`.
+
+## Package
+
+Assemble a replication package under `paper/replication/` with:
+
+- ordered scripts
+- README
+- data documentation
+- runtime requirements
+- file structure consistent with the paper references
+
+Use Coder plus Verifier when the package requires regeneration.
+
+## Audit
+
+Run Verifier in submission mode and check at least:
+
+1. master script exists
+2. tables reproduce
+3. figures reproduce
+4. README is complete
+5. data documentation exists
+6. script order is explicit
+7. dependencies are documented
+8. runtime is documented
+9. output paths match the paper
+10. no hardcoded paths remain
+
+Save the audit report in `quality_reports/`.
+
+## Final
+
+The final gate is strict:
+
+- overall score >= 95
+- every scored component >= 80
+- verifier pass required
+
+If the project fails the final gate, stop and list the blocking components. Do not generate submission-ready materials as if the paper passed.
 
 ## Outputs
 
-- Journal recommendation memo
-- Replication package artifacts under `paper/replication/`
-- Audit report in `quality_reports/`
-- Final submission checklist
+- journal recommendation memo
+- replication package artefacts
+- audit report
+- final submission checklist
+
+Append a research-journal entry whenever the task produces a formal audit or gate outcome.

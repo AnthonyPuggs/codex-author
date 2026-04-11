@@ -2,6 +2,8 @@
 
 This is the active operating workflow for the Codex-native Clo-Author.
 
+Use `plugins/clo-author/references/runtime-activation.md` for the plugin activation contract before relying on natural-language skill routing.
+
 ## 1. Plan First
 
 For any non-trivial task:
@@ -40,6 +42,32 @@ After planning:
 6. Fix issues and re-run review up to 3 rounds.
 7. Verify outputs mechanically whenever possible.
 8. Record the outcome and next step.
+
+### Enforcement
+
+- No artifact advances to the next phase without its critic's score >= 80.
+- If a creator artifact exists without a critic score, it is not approved.
+- Critics review and score only. Creators draft and revise only. Do not collapse those roles into one pass.
+- If a worker-critic pair still fails after 3 rounds, escalate according to `plugins/clo-author/references/agent-catalog.md` instead of looping indefinitely.
+- Phase dependencies are real gates:
+  - execution code requires an approved strategy
+  - execution writing requires approved code output
+  - peer review requires approved paper plus approved code
+  - submission requires verifier pass plus the final weighted gate
+
+### Dependency-Driven Loop
+
+```text
+Plan approved -> identify eligible phase -> dispatch worker -> dispatch paired critic
+-> score >= 80?
+   yes -> verify mechanically -> log outcome -> advance if dependencies are met
+   no  -> route fixes back to the worker -> critic re-reviews -> max 3 rounds
+         -> if still blocked, escalate
+```
+
+### Standalone Skill Rule
+
+Direct skill invocations still obey the same approval semantics. A standalone `strategize` run is not "approved strategy" unless the saved strategist-critic report clears the gate. A standalone `analyze` run must refuse to present code work as strategy-aligned if no approved strategy artefact exists.
 
 ## 4. Mechanical Enforcement
 

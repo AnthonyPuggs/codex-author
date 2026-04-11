@@ -5,6 +5,11 @@
 ## Objective
 [What we set out to accomplish this session]
 
+## Runtime State
+
+- Plugin activation: ACTIVE | BLOCKED
+- Smoke test: [What was checked at session start]
+
 ## Changes Made
 
 | File | Change | Reason | Quality Score |

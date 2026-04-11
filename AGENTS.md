@@ -30,7 +30,8 @@ This repository ships in **template mode**. The placeholders and current-state s
 
 ## Codex Operating Model
 
-- The active control plane is `AGENTS.md` plus the repo-local plugin at `plugins/clo-author/`
+- The active control plane is `AGENTS.md` plus the Clo-Author skill bundle at `plugins/clo-author/`
+- In Codex, native skill discovery should expose that bundle through `~/.agents/skills/clo-author`
 - The canonical Clo-Author upstream is `https://github.com/hugosantanna/clo-author`; use it as the infrastructure baseline for sync work
 - Skills live in `plugins/clo-author/skills/` and trigger from natural-language requests
 - Shared references live in `plugins/clo-author/references/`
@@ -123,6 +124,7 @@ cd paper/talks && TEXINPUTS=../preambles:$TEXINPUTS xelatex -interaction=nonstop
 - `plugins/clo-author/references/content-standards.md` -- table, figure, PDF, and exploration standards
 - `plugins/clo-author/references/quality-scoring.md` -- weighted scoring rubric, thresholds, and critic severity
 - `plugins/clo-author/references/logging.md` -- session-log and research-journal formats
+- `plugins/clo-author/references/runtime-activation.md` -- plugin activation contract and startup smoke test
 - `plugins/clo-author/references/agent-catalog.md` -- active role catalog for Codex delegation
 - `plugins/clo-author/references/domain-profile.md` -- field calibration
 - `plugins/clo-author/references/journal-profiles.md` -- journal-specific peer-review calibration

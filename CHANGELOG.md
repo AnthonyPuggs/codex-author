@@ -4,6 +4,23 @@ All notable changes to the Clo-Author are documented here.
 
 ---
 
+## [4.2.0] — 2026-04-11
+
+### Workflow Parity Restoration
+- Changed the repo-local marketplace policy so `clo-author` is installed by default in new Codex sessions
+- Added `plugins/clo-author/references/runtime-activation.md` to make plugin activation explicit and testable
+- Promoted critic gating, phase blocking, escalation, and round tracking into the active Codex references
+- Rebuilt the active skills so they again act as real workflow contracts rather than thin summaries
+- Updated README and guide pages to document the activation smoke test and blocked-runtime fallback
+
+### Codex Discovery Path Fix
+- Documented that this Codex harness discovers skills from `~/.agents/skills/` at startup
+- Added `scripts/install_codex_skill_link.sh` to install `~/.agents/skills/clo-author` as the machine-level fallback when repo-local activation remains blocked
+
+### Logging and Persistence
+- Expanded the active research-journal schema with round, approval, and next-actor fields
+- Updated the session-log template to capture runtime activation state explicitly
+
 ## [4.1.0] — 2026-04-11
 
 ### Canonical Upstream Realignment
