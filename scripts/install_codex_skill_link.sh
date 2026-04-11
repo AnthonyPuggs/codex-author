@@ -73,12 +73,17 @@ if [[ -L "$target_link" && "$current_target" == "$source_dir" ]]; then
   exit 0
 fi
 
-if [[ -e "$target_link" || -L "$target_link" ]]; then
+if [[ -e "$target_link" && ! -L "$target_link" ]]; then
+  echo "Error: $target_link is not a symlink -- refusing to remove" >&2
+  exit 1
+fi
+
+if [[ -L "$target_link" ]]; then
   if ! $force; then
     echo "Refusing to replace existing $target_link without --force" >&2
     exit 1
   fi
-  rm -rf "$target_link"
+  rm "$target_link"
 fi
 
 ln -s "$source_dir" "$target_link"

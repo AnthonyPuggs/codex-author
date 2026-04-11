@@ -20,6 +20,7 @@ import re
 from pathlib import Path
 from datetime import datetime
 import hashlib
+from typing import Any, Dict, List, Optional
 
 # Colors for terminal output
 CYAN = "\033[0;36m"
@@ -40,7 +41,7 @@ def get_session_dir() -> Path:
     return session_dir
 
 
-def find_active_plan(project_dir: str) -> dict | None:
+def find_active_plan(project_dir: str) -> Optional[Dict[str, Any]]:
     """Find the most recent non-completed plan."""
     plans_dir = Path(project_dir) / "quality_reports" / "plans"
     if not plans_dir.exists():
@@ -50,16 +51,17 @@ def find_active_plan(project_dir: str) -> dict | None:
 
     for plan_file in plan_files[:3]:  # Check last 3 plans
         content = plan_file.read_text()
+        content_upper = content.upper()
 
         # Skip completed plans
-        if "COMPLETED" in content.upper():
+        if "COMPLETED" in content_upper:
             continue
 
         # Extract status
         status = "in_progress"
-        if "APPROVED" in content.upper():
+        if "APPROVED" in content_upper:
             status = "approved"
-        elif "DRAFT" in content.upper():
+        elif "DRAFT" in content_upper:
             status = "draft"
 
         # Find current task (first unchecked item)
@@ -79,7 +81,7 @@ def find_active_plan(project_dir: str) -> dict | None:
     return None
 
 
-def extract_recent_decisions(project_dir: str, limit: int = 3) -> list[str]:
+def extract_recent_decisions(project_dir: str, limit: int = 3) -> List[str]:
     """Extract recent decisions from the session log."""
     logs_dir = Path(project_dir) / "quality_reports" / "session_logs"
     if not logs_dir.exists():
@@ -112,7 +114,7 @@ def extract_recent_decisions(project_dir: str, limit: int = 3) -> list[str]:
     return decisions
 
 
-def save_state(state: dict) -> None:
+def save_state(state: Dict[str, Any]) -> None:
     """Save state to the session directory."""
     state_file = get_session_dir() / "pre-compact-state.json"
     state["timestamp"] = datetime.now().isoformat()
@@ -135,14 +137,17 @@ def append_to_session_log(project_dir: str, trigger: str) -> None:
 
     try:
         with open(log_files[0], "a") as f:
-            f.write(f"\n\n---\n")
+            f.write("\n\n---\n")
             f.write(f"**Context compaction ({trigger}) at {datetime.now().strftime('%H:%M')}**\n")
             f.write(f"Check git log and quality_reports/plans/ for current state.\n")
     except IOError:
         pass
 
 
-def format_compaction_message(plan_info: dict | None, decisions: list[str]) -> str:
+def format_compaction_message(
+    plan_info: Optional[Dict[str, Any]],
+    decisions: List[str]
+) -> str:
     """Format the pre-compaction message."""
     lines = []
     lines.append(f"\n{YELLOW}⚡ Context compaction starting{NC}")
@@ -165,7 +170,7 @@ def format_compaction_message(plan_info: dict | None, decisions: list[str]) -> s
         lines.append("")
         lines.append(f"{GREEN}Recent decisions captured:{NC}")
         for d in decisions:
-            lines.append(f"  • {d[:80]}...")
+            lines.append(f"  • {d[:80]}{'...' if len(d) > 80 else ''}")
 
     lines.append("")
     lines.append(f"{CYAN}State will be restored after compaction.{NC}")

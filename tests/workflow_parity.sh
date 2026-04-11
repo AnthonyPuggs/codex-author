@@ -9,6 +9,8 @@ fail() {
   exit 1
 }
 
+command -v rg >/dev/null 2>&1 || fail "ripgrep (rg) required but not found"
+
 expect_match() {
   local path="$1"
   local pattern="$2"

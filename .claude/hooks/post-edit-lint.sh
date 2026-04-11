@@ -15,6 +15,13 @@ case "$FILE" in
 esac
 
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
-"$SCRIPT_DIR/lint-scripts.sh" "$FILE" 2>/dev/null
+PROJECT_DIR="${CLAUDE_PROJECT_DIR:-}"
+LINTER_SCRIPT="$SCRIPT_DIR/lint-scripts.sh"
+
+if [[ -n "$PROJECT_DIR" && -f "$PROJECT_DIR/plugins/clo-author/hooks/lint-scripts.sh" ]]; then
+  LINTER_SCRIPT="$PROJECT_DIR/plugins/clo-author/hooks/lint-scripts.sh"
+fi
+
+bash "$LINTER_SCRIPT" "$FILE" 2>/dev/null
 
 exit 0
