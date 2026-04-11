@@ -1,0 +1,88 @@
+---
+title: "The Clo-Author for Codex"
+subtitle: "AI Research Architecture for Empirical Social Science"
+---
+
+An open-source Codex-native workflow for empirical social science. The Clo-Author turns a repository into a structured research workspace with plans on disk, worker-critic quality control, domain calibration, and submission-oriented outputs.
+
+**Canonical upstream:** [hugosantanna/clo-author](https://github.com/hugosantanna/clo-author)  
+**This guide:** the Codex-native port that adapts the canonical project into `AGENTS.md` plus `plugins/clo-author/`.
+
+## Start in 5 Minutes
+
+### 1. Check the canonical upstream baseline
+
+```bash
+gh repo fork hugosantanna/clo-author --clone
+cd clo-author
+```
+
+If you are working in this Codex port instead, keep the current repository as the runtime surface and use the canonical upstream only for infrastructure comparisons.
+
+### 2. Open the repo in Codex
+
+Use your preferred Codex environment from the project root.
+
+### 3. Run the activation smoke test
+
+Before relying on natural-language skill routing, run the activation smoke test from `plugins/clo-author/references/runtime-activation.md`.
+
+On this Codex harness, the reliable machine-level fallback is:
+
+```bash
+bash scripts/install_codex_skill_link.sh
+```
+
+Confirm in a fresh session that:
+
+- `~/.agents/skills/clo-author` points to this repo's skill bundle
+- the 10 skill names are present
+
+If that check fails, treat the runtime as blocked and use `AGENTS.md` plus the active references as the fallback control plane until the plugin is loaded.
+
+### 4. Start with `AGENTS.md`
+
+Prompt Codex with:
+
+> Read `AGENTS.md` and help me initialize this repository for a new empirical project in **[YOUR FIELD]** on **[YOUR TOPIC]**. Build the research spec first, then start a literature review on **[YOUR TOPIC]**.
+
+The placeholders in `AGENTS.md` are intentional until that bootstrap step. This repository ships as a template first and becomes a working project when you fill them in.
+
+### 5. Work in plain English
+
+- "Review the literature on hospital consolidation."
+- "Find the best public datasets for teacher pay and mobility."
+- "Design the identification strategy for this policy shock."
+- "Peer review this paper for JHR."
+
+## What Changed From the Claude Version
+
+- `AGENTS.md` replaces `CLAUDE.md`
+- repo-local Codex skills replace slash commands
+- file-backed memory replaces built-in hidden memory
+- saved plans and session logs replace compaction-hook assumptions
+- legacy `.claude/` files are kept only as migration source material
+- active scoring, logging, and content standards live under `plugins/clo-author/references/`
+- runtime activation now has an explicit smoke test instead of being assumed
+
+## The Core Workflow
+
+1. Discovery
+2. Strategy
+3. Execution
+4. Review
+5. Submission
+
+Each phase can be entered directly. The active skill surface lives under `plugins/clo-author/skills/`.
+
+## What the Plugin Provides
+
+- `new-project` for end-to-end kickoff
+- `discover` for literature, data, and ideation
+- `strategize` for identification design
+- `analyze` for scripts, tables, and figures
+- `write` for manuscript drafting
+- `review` for code review and simulated peer review
+- `revise`, `talk`, `submit`, and `tools` for the rest of the pipeline
+
+See the [User Guide](user-guide.qmd), [Agents](agents.qmd), [Architecture](architecture.qmd), [Customization](customization.qmd), and [Reference](reference.qmd).

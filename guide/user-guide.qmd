@@ -1,0 +1,141 @@
+---
+title: "User Guide"
+subtitle: "How to Use the Codex Version"
+---
+
+# How It Works
+
+You describe the task in plain English. Codex maps that request onto the Clo-Author skills and references.
+
+Before relying on that mapping, run the activation smoke test in `plugins/clo-author/references/runtime-activation.md`. If the `~/.agents/skills/clo-author` link is missing or a fresh session still does not expose the Clo-Author skills, treat the runtime as blocked instead of assuming fallback Codex behaviour preserves the Clo-Author gates.
+
+| You Do | The Architecture Handles |
+|--------|--------------------------|
+| Describe the task | Skill selection and reference loading |
+| Approve the plan | Worker-critic execution and verification |
+| Review outputs | Quality gates and revision routing |
+| Ask for next steps | Phase transitions and escalation |
+
+# Research Workflow
+
+## 1. Discovery
+
+Use prompts like:
+
+- "Review the literature on local labor-market concentration."
+- "Find the best datasets for Medicaid eligibility."
+- "Help me scope this topic into a viable empirical paper."
+
+Outputs:
+
+- discovery memo
+- annotated bibliography
+- data inventory
+- research spec if needed
+
+## 2. Strategy
+
+Use prompts like:
+
+- "Design the identification strategy for this question."
+- "Stress test the assumptions behind this DiD."
+- "Draft a PAP for this experiment."
+
+Outputs:
+
+- strategy memo
+- robustness plan
+- falsification plan
+- decision record when the design choice is locked
+
+## 3. Execution
+
+Use prompts like:
+
+- "Implement the cleaning and baseline specification."
+- "Run the analysis in both R and Python."
+- "Draft the introduction from the current results."
+
+Outputs:
+
+- scripts
+- figures and tables
+- results summary
+- manuscript sections
+- pre-code report before implementation begins
+
+## 4. Review
+
+Use prompts like:
+
+- "Review this paper."
+- "Audit this code for reproducibility."
+- "Peer review this paper for JHR."
+- "Run a hostile referee simulation."
+
+Outputs:
+
+- review memo
+- weighted score grounded in `plugins/clo-author/references/quality-scoring.md`
+- peer-review decision memo
+
+## 5. Submission
+
+Use prompts like:
+
+- "Recommend journals for this paper."
+- "Build the replication package."
+- "Run the final submission gate."
+
+Outputs:
+
+- journal targeting memo
+- replication package
+- final checklist
+
+# Working Style
+
+## Plan-First by Default
+
+For non-trivial work, Codex should:
+
+1. write a spec if the request is ambiguous
+2. save a plan to `quality_reports/plans/`
+3. produce any required pre-flight report before strategy or code generation
+4. execute
+5. route through the paired critic until the active gate is cleared or the pair escalates
+6. verify
+7. save the outcome
+
+## File-Backed Memory
+
+The Codex version assumes explicit persistence:
+
+- `MEMORY.md` for durable lessons
+- `quality_reports/specs/` for requirements
+- `quality_reports/plans/` for task strategy
+- `quality_reports/decisions/` for discovery and strategy commitments
+- `quality_reports/session_logs/` for decision history
+- `quality_reports/research_journal.md` for compact multi-role coordination when needed
+
+## Explorations
+
+Use `explorations/` for fast-track work that is not yet ready for the full quality gate. Graduate successful experiments into the main paper, data, and scripts directories once they are stable.
+
+# Mechanical Checks
+
+Use the new enforcement layer when the task benefits from deterministic screening:
+
+- `plugins/clo-author/references/content-invariants.md` for non-negotiable paper, code, and talk rules
+- `plugins/clo-author/hooks/lint-scripts.sh [file|dir]` for advisory R, Python, and Julia linting before deeper review
+
+# Journal-Calibrated Peer Review
+
+Peer review simulation still uses the strongest part of the original architecture:
+
+1. Editor desk review
+2. Independent domain referee
+3. Independent methods referee
+4. Editorial synthesis
+
+When you specify a journal, the workflow reads `plugins/clo-author/references/journal-profiles.md`.

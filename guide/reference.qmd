@@ -1,0 +1,190 @@
+---
+title: "Workflow Reference"
+subtitle: "Skills, Prompt Patterns, and Outputs"
+---
+
+# Quick Lookup
+
+| Skill | Typical Prompt | Primary Output | Legacy Command |
+|------|-----------------|----------------|----------------|
+| `new-project` | "Set up a new project on X" | Spec + initial plan | `/new-project` |
+| `discover` | "Review the literature on X" | Discovery memo | `/discover` |
+| `strategize` | "Design the identification strategy" | Strategy memo + decision record | `/strategize` |
+| `analyze` | "Implement the analysis for this dataset" | Scripts + outputs + results summary | `/analyze` |
+| `write` | "Draft the introduction" | Revised manuscript text | `/write` |
+| `review` | "Peer review this paper for JHR" | Review memo + weighted score | `/review` |
+| `revise` | "Turn this referee report into revisions" | Response plan | `/revise` |
+| `talk` | "Create a seminar talk from the paper" | Slides | `/talk` |
+| `submit` | "Prepare the replication package" | Package + audit | `/submit` |
+| `tools` | "Compile the paper" | Utility output or bootstrap/refresh checklist | `/tools` |
+
+Before relying on any of the skills above, run the activation smoke test from `plugins/clo-author/references/runtime-activation.md` and verify `~/.agents/skills/clo-author` if the skill surface is missing.
+
+# `new-project`
+
+Use for end-to-end kickoff:
+
+- topic scoping
+- spec creation
+- plan creation
+- domain-profile setup
+- first discovery pass
+
+Outputs:
+
+- `quality_reports/specs/`
+- `quality_reports/plans/`
+- updated `AGENTS.md` or domain profile when requested
+
+# `discover`
+
+Use for:
+
+- literature review
+- data discovery
+- ideation
+- research interviews
+
+Typical prompts:
+
+- "Review the literature on platform monopsony."
+- "Find datasets for school finance reform."
+- "Help me narrow this topic into 3 viable papers."
+
+# `strategize`
+
+Use for:
+
+- identification design
+- robustness planning
+- falsification planning
+- PAP drafting
+- decision records when a design choice is locked
+
+Typical prompts:
+
+- "Design the DiD strategy for this policy change."
+- "Draft a PAP for this experiment."
+
+# `analyze`
+
+Use for:
+
+- cleaning and merges
+- variable construction
+- estimation
+- robustness checks
+- dual-language replication
+- pre-code alignment checks before implementation
+
+Typical prompts:
+
+- "Build the panel and run the baseline specification."
+- "Re-implement this in Python and compare results to R."
+
+# `write`
+
+Use for:
+
+- drafting sections
+- revising sections
+- humanizing or tightening prose
+
+Typical prompts:
+
+- "Draft the introduction from the current results."
+- "Rewrite this section to sound less templated."
+
+# `review`
+
+Use for:
+
+- code review
+- manuscript review
+- methods audit
+- proofreading
+- peer review simulation
+- stress testing
+
+Use `plugins/clo-author/references/content-invariants.md` for non-negotiable paper, code, and talk constraints. Run `plugins/clo-author/hooks/lint-scripts.sh` before deep code review when a deterministic pre-check is useful.
+
+Use `plugins/clo-author/references/quality-scoring.md` when the workflow needs a weighted score or gate result.
+
+Typical prompts:
+
+- "Review this script for reproducibility problems."
+- "Peer review this paper for QJE."
+- "Run a hostile referee simulation."
+
+# `revise`
+
+Use when the user provides:
+
+- referee reports
+- editor letters
+- revision memos
+
+Typical prompts:
+
+- "Turn this referee report into a response plan."
+- "Draft the point-by-point response letter."
+
+# `talk`
+
+Use for:
+
+- job market talks
+- seminars
+- short conference talks
+- lightning talks
+- slide audits
+
+Typical prompts:
+
+- "Create a seminar talk from `paper/main.tex`."
+- "Audit this Beamer deck for pacing and density."
+
+# `submit`
+
+Use for:
+
+- journal targeting
+- replication packages
+- final audits
+- submission checklists
+
+Use `plugins/clo-author/references/quality-scoring.md` for final-gate thresholds and `plugins/clo-author/references/logging.md` for audit recording.
+
+Typical prompts:
+
+- "Recommend realistic journals for this paper."
+- "Build and audit the replication package."
+
+# `tools`
+
+Use for small utility tasks:
+
+- compiling
+- bibliography validation
+- script linting
+- upstream comparison
+- session-state summaries
+- memory updates
+- template bootstrap
+- infrastructure refresh
+
+Typical prompts:
+
+- "Compile the paper."
+- "Check that every citation key exists."
+- "Summarize the latest plan and session log."
+- "Compare this repo against `upstream/main`."
+
+Useful upstream-maintenance commands:
+
+```bash
+git fetch upstream --tags
+git log --oneline main..upstream/main
+git diff --stat main...upstream/main
+git diff main...upstream/main -- plugins/clo-author guide templates
+```

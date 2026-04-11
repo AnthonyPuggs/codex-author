@@ -1,0 +1,20 @@
+{
+  "name": "clo-author-local-marketplace",
+  "interface": {
+    "displayName": "Local Research Plugins"
+  },
+  "plugins": [
+    {
+      "name": "clo-author",
+      "source": {
+        "source": "local",
+        "path": "./plugins/clo-author"
+      },
+      "policy": {
+        "installation": "INSTALLED_BY_DEFAULT",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Productivity"
+    }
+  ]
+}
