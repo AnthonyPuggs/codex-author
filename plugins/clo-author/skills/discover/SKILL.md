@@ -13,6 +13,7 @@ Launch the discovery phase and route to the appropriate worker-critic pair based
 - `plugins/clo-author/references/runtime-activation.md`
 - `plugins/clo-author/references/codex-workflow.md`
 - `plugins/clo-author/references/agent-catalog.md`
+- `plugins/clo-author/references/critic-runtime-contract.md`
 - `plugins/clo-author/references/domain-profile.md`
 - `plugins/clo-author/references/logging.md`
 
@@ -43,7 +44,7 @@ Produce a research specification in `quality_reports/` and calibrate the domain 
 Dispatch:
 
 - Librarian to collect and synthesize sources
-- librarian-critic to check coverage, recency, gaps, and scope drift
+- librarian-critic via `plugins/clo-author/references/active-critics/librarian-critic.md` to check coverage, recency, gaps, and scope drift
 
 Workflow:
 
@@ -60,7 +61,7 @@ If the librarian-critic finds material gaps, re-dispatch Librarian once for a ta
 Dispatch:
 
 - Explorer to build the ranked inventory
-- explorer-critic to stress-test feasibility and measurement
+- explorer-critic via `plugins/clo-author/references/active-critics/explorer-critic.md` to stress-test feasibility and measurement
 
 Each data candidate should report:
 

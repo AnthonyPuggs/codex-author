@@ -12,6 +12,7 @@ Create, audit, or compile presentations derived from the paper.
 - `AGENTS.md`
 - `plugins/clo-author/references/codex-workflow.md`
 - `plugins/clo-author/references/agent-catalog.md`
+- `plugins/clo-author/references/critic-runtime-contract.md`
 - `plugins/clo-author/references/content-invariants.md`
 - `paper/main.tex` or the active manuscript source
 
@@ -37,7 +38,7 @@ Workflow:
 1. dispatch Storyteller to build the deck from the paper
 2. prefer figures over tables, with tables in backup where possible
 3. ensure every claim in the deck is supported by the paper
-4. dispatch storyteller-critic to review narrative flow, visual quality, fidelity, scope control, and compilation
+4. dispatch `plugins/clo-author/references/active-critics/storyteller-critic.md` to review narrative flow, visual quality, fidelity, scope control, and compilation
 5. if there are critical issues, revise and re-review up to the normal round limit
 
 ## Audit

@@ -13,6 +13,7 @@ Design an identification strategy or pre-analysis plan by dispatching the Strate
 - `plugins/clo-author/references/runtime-activation.md`
 - `plugins/clo-author/references/codex-workflow.md`
 - `plugins/clo-author/references/agent-catalog.md`
+- `plugins/clo-author/references/critic-runtime-contract.md`
 - `plugins/clo-author/references/domain-profile.md`
 - `plugins/clo-author/references/logging.md`
 - `templates/decision-record.md` when a major strategy choice is being locked
@@ -62,7 +63,7 @@ The strategy memo should cover:
 
 ### Step 4: Dispatch strategist-critic
 
-Run strategist-critic review before treating the design as approved. The strategist-critic should review through the preserved four-phase protocol:
+Run strategist-critic review through `plugins/clo-author/references/active-critics/strategist-critic.md` before treating the design as approved. The strategist-critic should review through the preserved four-phase protocol:
 
 1. Claim identification
 2. Core design validity

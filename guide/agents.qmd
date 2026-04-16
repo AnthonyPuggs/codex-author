@@ -7,7 +7,7 @@ subtitle: "The Research Roles Behind the Skills"
 
 The Codex version keeps the same research roles as the Claude version, but they are now activated through skills and optional sub-agent delegation rather than through a `.claude/agents/` runtime.
 
-The active role summary lives in `plugins/clo-author/references/agent-catalog.md`. Detailed prompt copies from the Claude-era implementation are preserved under `plugins/clo-author/references/legacy-agents/`.
+The active role summary lives in `plugins/clo-author/references/agent-catalog.md`. The live detailed critic prompts now live under `plugins/clo-author/references/active-critics/`. Preserved prompt copies from the Claude-era implementation remain under `plugins/clo-author/references/legacy-agents/` as archival source material.
 
 # Discovery Roles
 
@@ -42,6 +42,10 @@ Reviews assumptions, inference, estimator choice, and whether a skeptical refere
 ## Data-engineer
 
 Handles cleaning, joins, panel construction, variable creation, and output plumbing.
+
+## data-engineer-critic
+
+Checks merge diagnostics, sample-flow accounting, provenance, variable construction, and descriptive-output plumbing.
 
 ## Coder
 

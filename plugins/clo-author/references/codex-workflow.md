@@ -38,7 +38,7 @@ After planning:
 2. For strategy work, start with a Pre-Strategy Report that states which discovery inputs were actually read and which are missing.
 3. For analysis work, start with a Pre-Code Report that states the strategy memo, naming map, estimator, and robustness obligations before editing code.
 4. Produce the artifact.
-5. Run the paired critic in read-only mode.
+5. Load the paired active critic prompt from `plugins/clo-author/references/active-critics/` plus `plugins/clo-author/references/critic-runtime-contract.md`, then run the critic in read-only mode.
 6. Fix issues and re-run review up to 3 rounds.
 7. Verify outputs mechanically whenever possible.
 8. Record the outcome and next step.
@@ -48,6 +48,7 @@ After planning:
 - No artifact advances to the next phase without its critic's score >= 80.
 - If a creator artifact exists without a critic score, it is not approved.
 - Critics review and score only. Creators draft and revise only. Do not collapse those roles into one pass.
+- Critic severity must be injected explicitly from the active phase using `plugins/clo-author/references/quality-scoring.md` and the shared critic runtime contract.
 - If a worker-critic pair still fails after 3 rounds, escalate according to `plugins/clo-author/references/agent-catalog.md` instead of looping indefinitely.
 - Phase dependencies are real gates:
   - execution code requires an approved strategy

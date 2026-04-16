@@ -14,6 +14,7 @@ Launch the full research pipeline from idea to paper, orchestrated through the d
 - `plugins/clo-author/references/runtime-activation.md`
 - `plugins/clo-author/references/codex-workflow.md`
 - `plugins/clo-author/references/agent-catalog.md`
+- `plugins/clo-author/references/critic-runtime-contract.md`
 - `plugins/clo-author/references/domain-profile.md`
 - `plugins/clo-author/references/logging.md`
 
@@ -31,7 +32,7 @@ Phase 2: Strategy (depends on Discovery inputs)
   -> strategize -> strategy memo + strategist-critic review
 
 Phase 3: Execution (depends on approved strategy)
-  -> analyze -> scripts + tables + figures + coder-critic review
+  -> analyze -> Data-engineer + data-engineer-critic, then Coder + coder-critic
   -> write -> manuscript sections + writer-critic review
 
 Phase 4: Review (depends on approved paper + approved code)
@@ -80,7 +81,7 @@ Phase 5: Submission (depends on final gate readiness)
 2. Run write only after the code/output side has produced a usable results summary.
 3. Save scripts, figures, tables, and manuscript artefacts in the standard paths.
 
-**Gate:** code work must pass coder-critic review before it becomes approved analysis. Paper sections must be backed by approved results and evidence.
+**Gate:** data-preparation work must pass data-engineer-critic review before it becomes approved pipeline input. Estimation code must pass coder-critic review before it becomes approved analysis. Paper sections must be backed by approved results and evidence.
 
 ### Step 4: Review Phase
 

@@ -2,7 +2,7 @@
 
 This is the active Codex-native role catalog for the Clo-Author. Use it when deciding which sub-agent to spawn, what inputs to provide, and whether the role is allowed to edit files.
 
-Detailed prompt copies from the Claude-era architecture are preserved under `plugins/clo-author/references/legacy-agents/` as migration source material. They are not the active control plane.
+Detailed active critic prompts live under `plugins/clo-author/references/active-critics/`. The preserved Claude-era prompt copies remain under `plugins/clo-author/references/legacy-agents/` as migration source material rather than the live runtime surface.
 
 ## Roles
 
@@ -14,9 +14,10 @@ Detailed prompt copies from the Claude-era architecture are preserved under `plu
 | explorer-critic | Discovery | Measurement and feasibility critique | Reviews Explorer | No | High |
 | Strategist | Strategy | Identification strategy memo, PAP outline | strategist-critic | Yes | High |
 | strategist-critic | Strategy | Threats-to-identification review, score | Reviews Strategist | No | High |
-| Data-engineer | Execution | Cleaning scripts, panel builds, figures | coder-critic | Yes | Medium |
+| Data-engineer | Execution | Cleaning scripts, panel builds, figures | data-engineer-critic | Yes | Medium |
+| data-engineer-critic | Execution | Data pipeline, merge, provenance, and sample-flow review | Reviews Data-engineer | No | High |
 | Coder | Execution | Estimation scripts, tables, robustness checks | coder-critic | Yes | Medium |
-| coder-critic | Execution | Reproducibility, correctness, strategy alignment review | Reviews Data-engineer and Coder | No | High |
+| coder-critic | Execution | Reproducibility, correctness, strategy alignment review | Reviews Coder | No | High |
 | Writer | Paper | Section drafts, rewrite passes, humanizer edits | writer-critic | Yes | Medium |
 | writer-critic | Paper | Notation, claims-vs-evidence, LaTeX review | Reviews Writer | No | Medium |
 | Editor | Peer review | Desk review, referee assignment, editorial synthesis | Coordinates referees | No | High |
@@ -63,7 +64,7 @@ Detailed prompt copies from the Claude-era architecture are preserved under `plu
 | Librarian + librarian-critic | User |
 | Explorer + explorer-critic | User |
 | Strategist + strategist-critic | User |
-| Data-engineer + coder-critic | Strategist |
+| Data-engineer + data-engineer-critic | Strategist |
 | Coder + coder-critic | Strategist |
 | Writer + writer-critic | Strategist or User |
 | Storyteller + storyteller-critic | Writer |

@@ -12,6 +12,7 @@ Unified review workflow that routes to the appropriate critic or referee roles b
 - `AGENTS.md`
 - `plugins/clo-author/references/runtime-activation.md`
 - `plugins/clo-author/references/codex-workflow.md`
+- `plugins/clo-author/references/critic-runtime-contract.md`
 - `plugins/clo-author/references/content-invariants.md`
 - `plugins/clo-author/references/quality-scoring.md`
 - `plugins/clo-author/references/logging.md`
@@ -30,6 +31,7 @@ Unified review workflow that routes to the appropriate critic or referee roles b
 ### Explicit modes
 
 - code review
+- data-engineering review
 - manuscript review
 - methods-only review
 - proofread / polish
@@ -53,16 +55,22 @@ Compute the weighted outcome using `plugins/clo-author/references/quality-scorin
 ### Code Review
 
 1. Run `plugins/clo-author/hooks/lint-scripts.sh [file|dir]` first.
-2. Dispatch coder-critic in read-only mode.
+2. Dispatch `plugins/clo-author/references/active-critics/coder-critic.md` in read-only mode.
+3. Save the report and quality outcome before proposing revisions.
+
+### Data-Engineering Review
+
+1. Run `plugins/clo-author/hooks/lint-scripts.sh [file|dir]` first when scripts exist.
+2. Dispatch `plugins/clo-author/references/active-critics/data-engineer-critic.md` in read-only mode.
 3. Save the report and quality outcome before proposing revisions.
 
 ### Methods-Only Review
 
-Dispatch strategist-critic standalone and run the four-phase econometric review.
+Dispatch `plugins/clo-author/references/active-critics/strategist-critic.md` standalone and run the four-phase econometric review.
 
 ### Proofread / Polish
 
-Dispatch writer-critic standalone, with `content-invariants.md` as the hard invariant layer for mechanical issues.
+Dispatch `plugins/clo-author/references/active-critics/writer-critic.md` standalone, with `content-invariants.md` as the hard invariant layer for mechanical issues.
 
 ### Full Peer Review
 

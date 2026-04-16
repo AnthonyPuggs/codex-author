@@ -13,6 +13,7 @@ Run end-to-end data analysis by dispatching Data-engineer for cleaning/figures, 
 - `plugins/clo-author/references/runtime-activation.md`
 - `plugins/clo-author/references/codex-workflow.md`
 - `plugins/clo-author/references/agent-catalog.md`
+- `plugins/clo-author/references/critic-runtime-contract.md`
 - `plugins/clo-author/references/domain-profile.md`
 - `plugins/clo-author/references/content-invariants.md`
 - `plugins/clo-author/references/logging.md`
@@ -48,6 +49,8 @@ If raw data or unfinished cleaning work exists, dispatch Data-engineer first to:
 - document merges, sample restrictions, and data losses
 - generate descriptive outputs and figure plumbing
 
+Review Data-engineer output through `plugins/clo-author/references/active-critics/data-engineer-critic.md` before treating the data pipeline as approved.
+
 ### Step 4: Main Analysis
 
 Dispatch Coder to:
@@ -72,7 +75,7 @@ Run `plugins/clo-author/hooks/lint-scripts.sh [file|dir]` before or alongside de
 
 ### Step 6: Code Review
 
-Dispatch coder-critic and review at least these categories:
+Dispatch `plugins/clo-author/references/active-critics/coder-critic.md` and review at least these categories:
 
 1. code-strategy alignment
 2. sanity checks on outputs
@@ -100,7 +103,7 @@ If the pair still cannot converge, escalate according to the active agent catalo
 If the user asks for dual-language replication:
 
 - run two implementations independently
-- review both with coder-critic
+- review both with `plugins/clo-author/references/active-critics/coder-critic.md`
 - compare outputs against the domain-profile tolerances
 - report divergence sources explicitly before declaring parity
 

@@ -44,5 +44,6 @@ Critics should match tone and deductions to the project phase rather than applyi
 ## 4. Operational Notes
 
 - Deterministic checks such as `plugins/clo-author/hooks/lint-scripts.sh` are advisory screens, not the full multi-role scoring system.
+- Paired critics must apply deductions through their active prompt file plus the shared critic contract at `plugins/clo-author/references/critic-runtime-contract.md`.
 - When a skill reports a "weighted score," it should be grounded in this rubric.
 - Submission checks must report both the overall score and any component below 80.

@@ -12,6 +12,7 @@ The Codex-native Clo-Author is customized through four active surfaces:
 | Constitution | `AGENTS.md` | Always-loaded rules, project state, core principles |
 | Plugin manifest | `plugins/clo-author/.codex-plugin/plugin.json` | Plugin identity and discovery metadata |
 | Skills | `plugins/clo-author/skills/` | Multi-step workflows |
+| Active critic prompts | `plugins/clo-author/references/active-critics/` | Detailed live paired-critic prompt layer |
 | References | `plugins/clo-author/references/` | Field calibration, workflow rules, role guidance |
 
 # 1. Customize `AGENTS.md`
@@ -86,13 +87,13 @@ Add `plugins/clo-author/references/content-invariants.md` when you want a hard n
 
 # 7. Handle Legacy Claude Assets Carefully
 
-The repository still contains `.claude/` plus migrated prompt copies under:
+The repository still contains `.claude/` plus archived prompt copies under:
 
 - `plugins/clo-author/references/legacy-agents/`
 - `plugins/clo-author/references/legacy-rules/`
 - `plugins/clo-author/hooks/legacy/`
 
-Treat those as source material, not as the live Codex runtime.
+Treat those as source material, not as the live Codex runtime. The live detailed critic layer is now `plugins/clo-author/references/active-critics/`.
 
 # 8. Refresh Infrastructure Without Replacing the Project
 

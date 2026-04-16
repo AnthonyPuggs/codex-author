@@ -13,6 +13,7 @@ The Codex-native Clo-Author has six active layers:
 | Runtime contract | `plugins/clo-author/references/runtime-activation.md` | Defines activation and blocked-runtime semantics |
 | Plugin manifest | `plugins/clo-author/.codex-plugin/plugin.json` | Stores repo-local metadata for the skill bundle |
 | Skills | `plugins/clo-author/skills/` | Natural-language workflows |
+| Active critic prompts | `plugins/clo-author/references/active-critics/` | Detailed live paired-critic prompt layer |
 | Home discovery link | `~/.agents/skills/clo-author` | Codex startup discovery path for the Clo-Author skill bundle |
 | References | `plugins/clo-author/references/` | Domain, journal, workflow, and role guidance |
 | File-backed memory | `MEMORY.md`, `quality_reports/` | Durable context across sessions |
@@ -30,7 +31,7 @@ The architecture still uses specialized roles, but Codex handles them through sk
 | Referee | Blind peer-review report | Read-only |
 | Infrastructure | Routing, verification, synthesis | Read-only by default |
 
-The active role catalog is in `plugins/clo-author/references/agent-catalog.md`.
+The active role catalog is in `plugins/clo-author/references/agent-catalog.md`, and the live detailed critic prompts now sit under `plugins/clo-author/references/active-critics/`. Preserved prompt copies under `plugins/clo-author/references/legacy-agents/` remain archival source material.
 
 # Execution Loop
 

@@ -13,6 +13,7 @@ Draft paper sections or apply a humaniser pass by dispatching the Writer workflo
 - `plugins/clo-author/references/runtime-activation.md`
 - `plugins/clo-author/references/codex-workflow.md`
 - `plugins/clo-author/references/agent-catalog.md`
+- `plugins/clo-author/references/critic-runtime-contract.md`
 - `plugins/clo-author/references/content-invariants.md`
 - `plugins/clo-author/references/domain-profile.md`
 - `plugins/clo-author/references/logging.md`
@@ -44,7 +45,7 @@ Before drafting, read as much relevant context as exists:
 1. Determine the requested section or rewriting mode.
 2. Dispatch Writer with the relevant evidence base.
 3. Draft only claims supported by existing outputs and citations.
-4. Use writer-critic review for notation consistency, unsupported claims, hedging, and LaTeX quality.
+4. Use `plugins/clo-author/references/active-critics/writer-critic.md` for notation consistency, unsupported claims, hedging, and LaTeX quality.
 5. Save the section under `paper/sections/` or update `paper/main.tex` when the repo structure demands it.
 
 ## Humaniser / Rewrite Workflow
