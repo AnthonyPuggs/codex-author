@@ -108,4 +108,50 @@ expect_match \
   "~/.agents/skills/clo-author" \
   "guide quick start must mention the Codex home-level skill link fallback"
 
+expect_match \
+  "guide/_quarto.yml" \
+  'light:[[:space:]]*\[flatly, styles/theme-light\.scss\]' \
+  "guide theme must use a light flatly theme with a dedicated light SCSS entrypoint"
+
+expect_match \
+  "guide/_quarto.yml" \
+  'dark:[[:space:]]*\[slate, styles/theme-dark\.scss\]' \
+  "guide theme must use a dark slate theme with a dedicated dark SCSS entrypoint"
+
+expect_match \
+  "guide/_quarto.yml" \
+  'respect-user-color-scheme:[[:space:]]*true' \
+  "guide theme must respect the reader color-scheme preference"
+
+expect_match \
+  "guide/_quarto.yml" \
+  'syntax-highlighting:[[:space:]]*\n[[:space:]]*light:[[:space:]]*arrow\n[[:space:]]*dark:[[:space:]]*arrow-dark' \
+  "guide theme must configure adaptive arrow syntax highlighting"
+
+expect_match \
+  "guide/_quarto.yml" \
+  'mainfont:[[:space:]]*"Public Sans, system-ui, sans-serif"' \
+  "guide theme must switch to Public Sans for UI and body copy"
+
+expect_match \
+  "guide/_quarto.yml" \
+  'monofont:[[:space:]]*"IBM Plex Mono, Menlo, Consolas, monospace"' \
+  "guide theme must switch to IBM Plex Mono for code"
+
+expect_file \
+  "guide/styles/theme-light.scss" \
+  "guide theme must provide a dedicated light mode stylesheet"
+
+expect_file \
+  "guide/styles/theme-dark.scss" \
+  "guide theme must provide a dedicated dark mode stylesheet"
+
+expect_file \
+  "guide/styles/_tokens.scss" \
+  "guide theme must provide shared semantic design tokens"
+
+expect_file \
+  "guide/styles/_components.scss" \
+  "guide theme must provide shared component styling"
+
 echo "workflow parity checks passed"

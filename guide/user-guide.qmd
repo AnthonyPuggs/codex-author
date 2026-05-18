@@ -5,9 +5,9 @@ subtitle: "How to Use the Codex Version"
 
 # How It Works
 
-You describe the task in plain English. Codex maps that request onto the Clo-Author skills and references.
+This repository is the template-first Codex port, and the active control plane is `AGENTS.md` plus `plugins/clo-author/`. You describe the task in plain English, and Codex maps that request onto the Clo-Author skills and references when the runtime activation checks pass.
 
-Before relying on that mapping, run the activation smoke test in `plugins/clo-author/references/runtime-activation.md`. If the `~/.agents/skills/clo-author` link is missing or a fresh session still does not expose the Clo-Author skills, treat the runtime as blocked instead of assuming fallback Codex behaviour preserves the Clo-Author gates.
+Before relying on that mapping, run the activation smoke test in `plugins/clo-author/references/runtime-activation.md`. If the `~/.agents/skills/clo-author` link is missing or a fresh session still does not expose the Clo-Author skills, treat the runtime as blocked instead of assuming fallback Codex behaviour preserves the Clo-Author gates. The local marketplace metadata helps installation, but it does not replace the smoke test. Legacy `.claude/` material remains migration reference only.
 
 | You Do | The Architecture Handles |
 |--------|--------------------------|

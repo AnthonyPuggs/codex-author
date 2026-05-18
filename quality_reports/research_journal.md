@@ -27,3 +27,13 @@
 **Verdict:** A fresh Codex session in this repository exposed `clo-author` and all 10 skills, confirming that native skill routing is active rather than blocked.
 **Next:** Proceed with repository work under the standard Clo-Author workflow.
 **Report:** `quality_reports/session_logs/2026-04-11_confirm-fresh-session-clo-author-activation.md`
+
+### 2026-04-12 19:01 — Agent Architecture Review
+**Phase:** Infrastructure
+**Target:** active agent architecture, critic strictness, and subagent tooling behaviour
+**Round:** N/A
+**Score:** PASS
+**Approval:** APPROVED
+**Verdict:** The audit found three repo-level migration/design issues and one platform-owned runtime concern. The active Codex surface preserves worker-critic skeletons but not the full operative critic prompt layer; `data-engineer -> coder-critic` is inherited design; bounded probes did not reproduce a universal Vercel MCP stall.
+**Next:** Implement the remediation backlog: restore active critic prompts, add `data-engineer-critic`, encode literature-search fan-out, and add no-MCP-by-default guardrails.
+**Report:** `quality_reports/agent_architecture_review_2026-04-12.md`

@@ -5,7 +5,7 @@ subtitle: "How the Codex Version Works"
 
 # System Overview
 
-The Codex-native Clo-Author has six active layers:
+The Codex-native Clo-Author has seven active layers:
 
 | Layer | Location | Purpose |
 |-------|----------|---------|
@@ -17,6 +17,8 @@ The Codex-native Clo-Author has six active layers:
 | Home discovery link | `~/.agents/skills/clo-author` | Codex startup discovery path for the Clo-Author skill bundle |
 | References | `plugins/clo-author/references/` | Domain, journal, workflow, and role guidance |
 | File-backed memory | `MEMORY.md`, `quality_reports/` | Durable context across sessions |
+
+The repo also ships a local marketplace file at `.agents/plugins/marketplace.json`. That supports repo-local plugin installation, but it does not replace the runtime smoke test or prove that the Clo-Author skill surface is live in the current Codex session.
 
 The legacy `.claude/` tree is no longer part of the active runtime. It remains only as source material during the migration.
 

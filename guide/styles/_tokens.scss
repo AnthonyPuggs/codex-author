@@ -1,0 +1,24 @@
+$guide-font-sans: "Public Sans", system-ui, sans-serif !default;
+$guide-font-mono: "IBM Plex Mono", Menlo, Consolas, monospace !default;
+
+$page-bg: #ffffff !default;
+$surface: #ffffff !default;
+$surface-raised: #f6f8fb !default;
+$surface-subtle: #fafcff !default;
+$text-primary: #102a43 !default;
+$text-muted: #62717f !default;
+$text-soft: #8291a1 !default;
+$border-muted: #d9e2ec !default;
+$border-strong: #bcccdc !default;
+$accent: #0f766e !default;
+$accent-strong: #155e75 !default;
+$accent-soft: rgba(15, 118, 110, 0.08) !default;
+$accent-outline: rgba(15, 118, 110, 0.2) !default;
+$navbar-bg: rgba(255, 255, 255, 0.92) !default;
+$shadow-soft: 0 12px 24px rgba(15, 23, 42, 0.08) !default;
+
+$guide-max-width: calc(1080px - 3rem) !default;
+$guide-radius: 0.75rem !default;
+$guide-radius-sm: 0.45rem !default;
+$guide-border-width: 1px !default;
+$guide-transition: 180ms ease !default;

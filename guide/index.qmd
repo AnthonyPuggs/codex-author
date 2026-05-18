@@ -1,23 +1,25 @@
 ---
-title: "The Clo-Author for Codex"
-subtitle: "AI Research Architecture for Empirical Social Science"
+title: "Codex-Author"
+subtitle: |
+  The Clo-Author for Codex  
+  AI Research Architecture for Empirical Economics and other Social Science
 ---
 
-An open-source Codex-native workflow for empirical social science. The Clo-Author turns a repository into a structured research workspace with plans on disk, worker-critic quality control, domain calibration, and submission-oriented outputs.
+An open-source Codex-native workflow for empirical economics and other social science. This repository is the template-first Codex port of Clo-Author and remains a work in progress while the migration from the Claude-era architecture is being tightened. It turns a repository into a structured research workspace with plans on disk, worker-critic quality control, domain calibration, and submission-oriented outputs.
 
 **Canonical upstream:** [hugosantanna/clo-author](https://github.com/hugosantanna/clo-author)  
-**This guide:** the Codex-native port that adapts the canonical project into `AGENTS.md` plus `plugins/clo-author/`.
+**This guide:** the live Codex port in this repository, where the active control plane is `AGENTS.md` plus `plugins/clo-author/`.
 
 ## Start in 5 Minutes
 
-### 1. Check the canonical upstream baseline
+### 1. Fork and clone this Codex port
 
 ```bash
-gh repo fork hugosantanna/clo-author --clone
-cd clo-author
+gh repo fork AnthonyPuggs/codex-author --clone
+cd codex-author
 ```
 
-If you are working in this Codex port instead, keep the current repository as the runtime surface and use the canonical upstream only for infrastructure comparisons.
+Use this repository as the runtime surface. Treat `hugosantanna/clo-author` as the canonical upstream baseline for infrastructure comparisons, release checks, and selective refresh work.
 
 ### 2. Open the repo in Codex
 
@@ -25,7 +27,7 @@ Use your preferred Codex environment from the project root.
 
 ### 3. Run the activation smoke test
 
-Before relying on natural-language skill routing, run the activation smoke test from `plugins/clo-author/references/runtime-activation.md`.
+Before relying on natural-language skill routing, run the activation smoke test from `plugins/clo-author/references/runtime-activation.md`. The local marketplace entry is useful, but it is not sufficient evidence that the live Codex skill surface has actually loaded the Clo-Author bundle in the current session.
 
 On this Codex harness, the reliable machine-level fallback is:
 

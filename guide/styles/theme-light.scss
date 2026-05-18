@@ -1,0 +1,43 @@
+/*-- scss:defaults --*/
+
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Public+Sans:wght@400;500;600;700;800&display=swap');
+@import "tokens";
+
+$page-bg: #f4f7fb;
+$surface: #ffffff;
+$surface-raised: #edf3f8;
+$surface-subtle: #f8fafc;
+$text-primary: #102a43;
+$text-muted: #62717f;
+$text-soft: #8291a1;
+$border-muted: #d7e0e8;
+$border-strong: #b6c5d1;
+$accent: #0f766e;
+$accent-strong: #155e75;
+$accent-soft: rgba(15, 118, 110, 0.08);
+$accent-outline: rgba(15, 118, 110, 0.18);
+$navbar-bg: rgba(248, 250, 252, 0.92);
+$shadow-soft: 0 14px 26px rgba(15, 23, 42, 0.06);
+
+$body-bg: $page-bg;
+$body-color: $text-primary;
+$headings-color: $text-primary;
+$link-color: $accent-strong;
+$link-hover-color: $accent;
+$code-color: #155e75;
+$code-bg: #e8f3f4;
+$border-color: $border-muted;
+$input-bg: $surface;
+$popover-bg: $surface;
+$font-family-sans-serif: "Public Sans", system-ui, sans-serif;
+$font-family-monospace: "IBM Plex Mono", Menlo, Consolas, monospace;
+$border-radius: $guide-radius;
+
+$mermaid-bg-color: transparent;
+$mermaid-edge-color: $border-strong;
+$mermaid-node-fg-color: $text-primary;
+$mermaid-fg-color: $text-primary;
+
+/*-- scss:rules --*/
+
+@import "components";

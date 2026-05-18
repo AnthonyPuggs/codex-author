@@ -5,8 +5,10 @@ subtitle: "Skills, Prompt Patterns, and Outputs"
 
 # Quick Lookup
 
-| Skill | Typical Prompt | Primary Output | Legacy Command |
-|------|-----------------|----------------|----------------|
+The final column below is historical migration context only. Current Codex sessions use natural-language skill triggering once runtime activation has been confirmed.
+
+| Skill | Typical Prompt | Primary Output | Historical Claude Command |
+|------|-----------------|----------------|---------------------------|
 | `new-project` | "Set up a new project on X" | Spec + initial plan | `/new-project` |
 | `discover` | "Review the literature on X" | Discovery memo | `/discover` |
 | `strategize` | "Design the identification strategy" | Strategy memo + decision record | `/strategize` |
@@ -18,7 +20,7 @@ subtitle: "Skills, Prompt Patterns, and Outputs"
 | `submit` | "Prepare the replication package" | Package + audit | `/submit` |
 | `tools` | "Compile the paper" | Utility output or bootstrap/refresh checklist | `/tools` |
 
-Before relying on any of the skills above, run the activation smoke test from `plugins/clo-author/references/runtime-activation.md` and verify `~/.agents/skills/clo-author` if the skill surface is missing.
+Before relying on any of the skills above, run the activation smoke test from `plugins/clo-author/references/runtime-activation.md` and verify `~/.agents/skills/clo-author` if the skill surface is missing. The repo-local marketplace metadata is supportive, but it is not proof that the active skill surface loaded correctly.
 
 # `new-project`
 

@@ -5,7 +5,7 @@ subtitle: "Adapt the Codex Version to Your Workflow"
 
 # Overview
 
-The Codex-native Clo-Author is customized through four active surfaces:
+This repository is still template-first, so most customization work means replacing shipped placeholders with project facts while preserving the Codex control plane. The active control plane is `AGENTS.md` plus `plugins/clo-author/`, and the Codex-native Clo-Author is customized through four active surfaces:
 
 | Surface | Location | Use It For |
 |---------|----------|------------|
@@ -14,6 +14,8 @@ The Codex-native Clo-Author is customized through four active surfaces:
 | Skills | `plugins/clo-author/skills/` | Multi-step workflows |
 | Active critic prompts | `plugins/clo-author/references/active-critics/` | Detailed live paired-critic prompt layer |
 | References | `plugins/clo-author/references/` | Field calibration, workflow rules, role guidance |
+
+The local marketplace file under `.agents/plugins/marketplace.json` helps Codex discover the repo-local plugin, but it is support metadata rather than part of the active research workflow.
 
 # 1. Customize `AGENTS.md`
 
